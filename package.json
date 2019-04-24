@@ -1,0 +1,17 @@
+{
+  "name": "ui5con",
+  "version": "0.0.1",
+  "description": "",
+  "private": true,
+  "dependencies": {
+	"typescript": "^3.4.5"
+  },
+  "devDependencies": {
+	"@sap/grunt-sapui5-bestpractice-build": "1.3.65",
+	"@sap/grunt-sapui5-bestpractice-test": "2.0.1",
+	"@ui5/cli": "^1.3.0"
+  },
+  "scripts": {
+	"test": "grunt unit_and_integration_tests"
+  }
+}
