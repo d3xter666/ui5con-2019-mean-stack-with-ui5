@@ -4,7 +4,7 @@ module.exports = function (grunt) {
 	grunt.initConfig({
         ts: {
             default : {
-				src: ["**/*.ts", "!node_modules/**/*.ts"],
+				src: ["./webapp/**/*.ts", "!node_modules/**/*.ts", "!dist**/*.ts"],
 				options: {
 					allowJs: false
 				},
