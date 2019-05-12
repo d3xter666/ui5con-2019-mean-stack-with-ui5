@@ -1,23 +1,5 @@
 {
- "name": "ui5con",
- "version": "0.0.1",
- "description": "",
- "private": true,
- "dependencies": {
-  "grunt": "^1.0.4",
-  "grunt-ts": "^6.0.0-beta.22",
-  "serve": "^11.0.0",
-  "typescript": "^3.4.5"
- },
- "devDependencies": {
-  "@ui5/cli": "^1.3.0"
- },
- "scripts": {
-  "test": "grunt unit_and_integration_tests",
-  "start": "grunt ts && ui5 build"
- }
-}
-  "name": "ui5con",
+	"name": "ui5con",
   "version": "0.0.1",
   "description": "",
   "private": true,
