@@ -1,20 +1,18 @@
-class Student {
-    fullName: string;
-    constructor(public firstName: string, public middleInitial: string, public lastName: string) {
-        this.fullName = firstName + " " + middleInitial + " " + lastName;
-    }
-}
-
-interface Person {
-    firstName: string,
-    lastName: string
-}
+sap.ui.define([
+    "sap/ui/core/mvc/Controller",
+    "sap/ui/model/json/JSONModel",
+], function (
+    Controller,
+    JSONModel
+) {
+    "use strict";
 
 
-function greeter(person: Person) {
-    return "Hello, " + person.firstName + " " + person.lastName;
-}
+    return Controller.extend("ui5con2019.controller.BaseController", {
+        onChange: function () {
+            var oModel = this.getView().getModel("zzz");
 
-let user = new Student("Jane", "M.", "User");
-
-document.body.innerHTML = greeter(user);
+            oModel.loadData("/api/v2/zzz", oModel.getData(), true, "POST");
+        }
+    });
+});

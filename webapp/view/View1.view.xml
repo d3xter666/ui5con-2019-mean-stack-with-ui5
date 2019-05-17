@@ -1,9 +1,12 @@
-<mvc:View controllerName="ui5con.ui5con.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="ui5con2019.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
 	<Shell id="shell">
 		<App id="app">
 			<pages>
 				<Page id="page" title="{i18n>title}">
-					<content></content>
+					<content>
+						<Input value="{zzz>/value}" change="onChange" />
+						<Text text="{zzz>/value}" />
+					</content>
 				</Page>
 			</pages>
 		</App>

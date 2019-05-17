@@ -5,7 +5,7 @@ sap.ui.getCore().attachInit(function () {
 	"use strict";
 
 	sap.ui.require([
-		"ui5con/ui5con/test/integration/AllJourneys"
+		"ui5con2019/test/integration/AllJourneys"
 	], function () {
 		QUnit.start();
 	});

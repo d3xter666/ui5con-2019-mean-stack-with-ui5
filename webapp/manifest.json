@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "ui5con.ui5con",
+		"id": "ui5con2019",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -12,6 +12,12 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
+		},
+		"dataSources": {
+		  "backendAPI": {
+			"uri": "/api/v2/zzz",
+			"type": "JSON"
+		  }
 		}
 	},
 
@@ -35,7 +41,7 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "ui5con.ui5con.view.View1",
+			"viewName": "ui5con2019.view.View1",
 			"type": "XML",
 			"async": true,
 			"id": "View1"
@@ -53,10 +59,14 @@
 			"cozy": true
 		},
 		"models": {
+			"zzz": {
+				"dataSource": "backendAPI",
+				"preload": true
+			},
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "ui5con.ui5con.i18n.i18n"
+					"bundleName": "ui5con2019.i18n.i18n"
 				}
 			}
 		},
@@ -70,7 +80,7 @@
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "ui5con.ui5con.view",
+				"viewPath": "ui5con2019.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
 				"clearControlAggregation": false

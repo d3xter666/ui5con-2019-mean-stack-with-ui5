@@ -1,16 +1,26 @@
 {
-    "compilerOptions": {
-        "outDir": "./webapp/",        // path to output directory
-        "sourceMap": true,          // allow sourcemap support
-        "strictNullChecks": true,   // enable strict null checks as a best practice
-        "module": "es6",            // specify module code generation
-        "jsx": "react",             // use typescript to transpile jsx to js
-        "target": "es5",            // specify ECMAScript target version
-        "allowJs": true,            // allow a partial TypeScript and JavaScript codebase
-        "declaration": true
-
-    },
-    "include": [
-        "./src/"
-    ]
+  "compilerOptions": {
+	// path to output directory
+	"outDir": "./webapp/",
+	// allow sourcemap support
+	"sourceMap": true,
+	// enable strict null checks as a best practice
+	"strictNullChecks": true,
+	// specify module code generation. "none" because UI5 has its own unique modules system.
+	"module": "none",
+	// specify ECMAScript target version
+	"target": "es5",
+	// allow a partial TypeScript and JavaScript codebase
+	"allowJs": true,
+	"declaration": true,
+	// We are not interested in generating any code.
+	"noEmit": true,
+	"checkJs": true,
+	"types": [
+	  "@openui5/ts-types"
+	]
+  },
+  "include": [
+	"./src/"
+  ]
 }
