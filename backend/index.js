@@ -1,5 +1,5 @@
 import express from "express";
-import express_graphql from "express-graphql";
+import expressGraphql from "express-graphql";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
@@ -26,7 +26,7 @@ app.use(
 	"/graphql",
 	cors(),
 	bodyParser.json(),
-	express_graphql({
+	expressGraphql({
 		schema,
 		graphiql: true
 	})

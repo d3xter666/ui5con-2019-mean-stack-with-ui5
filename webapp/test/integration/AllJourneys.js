@@ -7,7 +7,7 @@ sap.ui.define([
 
 	Opa5.extendConfig({
 		arrangements: new Startup(),
-		viewNamespace: "ui5con.ui5con.view.",
+		viewNamespace: "ui5con2019.view.",
 		autoWait: true
 	});
 });
