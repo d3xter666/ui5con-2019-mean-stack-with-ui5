@@ -1,0 +1,50 @@
+<core:FragmentDefinition
+	xmlns:mvc="sap.ui.core.mvc"
+	xmlns="sap.m"
+	xmlns:grid="sap.ui.layout.cssgrid"
+	xmlns:core="sap.ui.core"
+	xmlns:f="sap.f"
+	xmlns:form="sap.ui.layout.form"
+	xmlns:card="sap.f.cards">
+	<VBox class="demoBox">
+		<f:Card height="100%">
+			<f:header>
+				<card:Header
+					title="User #1"
+					subtitle=""/>
+			</f:header>
+			<f:content>
+				<form:SimpleForm
+					editable="false"
+					layout="ResponsiveGridLayout"
+					title=""
+					labelSpanXL="3"
+					labelSpanL="3"
+					labelSpanM="3"
+					labelSpanS="12"
+					adjustLabelSpan="false"
+					emptySpanXL="4"
+					emptySpanL="4"
+					emptySpanM="4"
+					emptySpanS="0"
+					columnsXL="1"
+					columnsL="1"
+					columnsM="1"
+					singleContainerFullSize="false" >
+					<form:content>
+						<Label text="Name" />
+						<Text text="SupplierName" />
+						<Label text="E-mail" />
+						<Text text="mail@mail.mail" />
+						<OverflowToolbar design="Solid" class="sapContrast">
+							<ToolbarSpacer/>
+							<Button text="Edit" type="Transparent"/>
+							<Button icon="sap-icon://save" type="Transparent"/>
+							<Button icon="sap-icon://delete" type="Transparent"/>
+						</OverflowToolbar>
+					</form:content>
+				</form:SimpleForm>
+			</f:content>
+		</f:Card>
+	</VBox>
+</core:FragmentDefinition>
