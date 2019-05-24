@@ -36,24 +36,24 @@
 					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
 
 					<grid:customLayout>
-						<grid:GridResponsiveLayout layoutChange="onLayoutChange">
+						<grid:GridResponsiveLayout>
 							<grid:layoutS>
 								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 8rem)"
+										gridTemplateColumns="repeat(auto-fit, 100%)"
 										gridRowGap="1rem"
 										gridColumnGap="1rem">
 								</grid:GridSettings>
 							</grid:layoutS>
 							<grid:layout>
 								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 12rem)"
+										gridTemplateColumns="repeat(auto-fit, 31%)"
 										gridRowGap="1rem"
 										gridColumnGap="1rem">
 								</grid:GridSettings>
 							</grid:layout>
 							<grid:layoutXL>
 								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 20rem)"
+										gridTemplateColumns="repeat(auto-fit, 24%)"
 										gridRowGap="1rem"
 										gridColumnGap="1rem">
 								</grid:GridSettings>
