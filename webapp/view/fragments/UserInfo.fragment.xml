@@ -18,9 +18,7 @@
 
 						<Label text="{i18n>userInfoTitle}"/>
 						<Text text="{title}"/>
-						<Select
-								forceSelection="false"
-								selectedKey="{title}"
+						<Select selectedKey="{title}"
 								items="{
 									path: 'userMeta>/titles'
 								}">
@@ -41,9 +39,7 @@
 
 						<Label text="{i18n>userInfoJobTitle}"/>
 						<Text text="{job_title}"/>
-						<Select
-								forceSelection="false"
-								selectedKey="{job_title}"
+						<Select selectedKey="{job_title}"
 								items="{
 									path: 'userMeta>/job_titles'
 								}">
@@ -52,9 +48,7 @@
 
 						<Label text="{i18n>userInfoCompany}"/>
 						<Text text="{company}"/>
-						<Select
-								forceSelection="false"
-								selectedKey="{company}"
+						<Select selectedKey="{company}"
 								items="{
 									path: 'userMeta>/companies'
 								}">
@@ -63,9 +57,7 @@
 
 						<Label text="{i18n>userInfoDepartment}"/>
 						<Text text="{department}"/>
-						<Select
-								forceSelection="false"
-								selectedKey="{department}"
+						<Select selectedKey="{department}"
 								items="{
 									path: 'userMeta>/departments'
 								}">

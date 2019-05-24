@@ -14,7 +14,12 @@
 				</Toolbar>
 			</subHeader>
 			<content>
-				<grid:CSSGrid>
+				<grid:CSSGrid items="{
+									path: '/'
+								}">
+
+					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+
 					<grid:customLayout>
 						<grid:GridResponsiveLayout layoutChange="onLayoutChange">
 							<grid:layoutS>
@@ -40,17 +45,6 @@
 							</grid:layoutXL>
 						</grid:GridResponsiveLayout>
 					</grid:customLayout>
-
-					<grid:items>
-						<!-- TODO: Use data binding instead -->
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
-						<core:Fragment fragmentName="ui5con2019.view.fragments.NewUserInfo" type="XML"/>
-					</grid:items>
 				</grid:CSSGrid>
 
 
