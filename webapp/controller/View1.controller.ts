@@ -1,7 +1,7 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
-], (Controller, Fragment) => {
+], (Controller: sap.ui.core.mvc.Controller, Fragment: sap.ui.core.Fragment) => {
     "use strict";
 
     return Controller.extend("ui5con2019.controller.BaseController", {
@@ -24,11 +24,19 @@ sap.ui.define([
 
         handleNewItemPress(): void {
             let aData: object[];
+            let oNewRecord: object = {meta: {editable: true}};
             const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
+            const {visibleFields} = this.getView().getModel("config").getData();
+
+            // Go trough available keys and init
+            oNewRecord = visibleFields.reduce((acc: object, fieldName: string) => {
+                acc[fieldName] = "";
+                return acc;
+            }, oNewRecord);
 
             aData = JSON.parse(oModel.getJSON());
             // Create new container in "editable mode"
-            aData.push({meta: {editable: true}});
+            aData.push(oNewRecord);
             oModel.setData(aData);
         },
 
