@@ -14,12 +14,12 @@
 	]
   },
   "include": [
-	"./webapp/*.ts",
-	"./webapp/**/*.ts"
+	"./webapp/*",
+	"./webapp/**/*"
   ],
   "exclude": [
-	"./test/*",
-	"./test/**/*",
+	"./webapp/test/*",
+	"./webapp/test/**/*",
 	"./node_modules",
 	"./backend"
   ]
