@@ -10,16 +10,16 @@ sap.ui.define([
         },
 
         _loadAddNewItem(): void {
-            Fragment.load({
-                controller: this,
-                id: this.getView().getId(),
-                name: "ui5con2019.view.fragments.NewUserInfo",
-                type: "XML",
-            }).then((oNewUserFragment) => {
-                const oGrid: sap.ui.layout.cssgrid.CSSGrid = this.getView().byId("gridLayout");
-
-                oGrid.insertItem(oNewUserFragment, 0);
-            });
+            // Fragment.load({
+            //     controller: this,
+            //     id: this.getView().getId(),
+            //     name: "ui5con2019.view.fragments.NewUserInfo",
+            //     type: "XML",
+            // }).then((oNewUserFragment) => {
+            //     const oGrid: sap.ui.layout.cssgrid.CSSGrid = this.getView().byId("gridLayout");
+            //
+            //     oGrid.insertItem(oNewUserFragment, 0);
+            // });
         },
 
         handleNewItemPress(): void {

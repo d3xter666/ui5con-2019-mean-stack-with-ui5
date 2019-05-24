@@ -61,12 +61,17 @@
 		"models": {
 			"": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mock-data.json",
+				"uri": "model/data/mock-data.json",
 				"preload": true
 			},
 			"userMeta": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/mock-user-meta.json",
+				"uri": "model/data/mock-user-meta.json",
+				"preload": true
+			},
+			"config": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/config.json",
 				"preload": true
 			},
 			"i18n": {

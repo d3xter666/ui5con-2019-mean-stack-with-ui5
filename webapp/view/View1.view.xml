@@ -9,8 +9,21 @@
 		<Page title="{i18n>appTitle}" class="sapUiContentPadding">
 			<subHeader>
 				<Toolbar>
+					<Button text="{i18n>userInfoNewUser}" press="handleNewItemPress" />
+
 					<ToolbarSpacer/>
-					<Title text="Toolbar"/>
+
+					<Label text="Visible Fields:"/>
+					<MultiComboBox	width="15rem"
+									selectedKeys="{config>/visibleFields}"
+									items="{
+										path: 'config>/availableFields',
+										templateShareable: false
+									}">
+						<core:Item key="{config>field}" text="{config>fieldName}"/>
+					</MultiComboBox>
+
+					<Button text="{i18n>goBtn}" type="Emphasized"/>
 				</Toolbar>
 			</subHeader>
 			<content>

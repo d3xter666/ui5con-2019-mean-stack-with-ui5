@@ -1,0 +1,23 @@
+{
+  "visibleFields": [
+	"avatar",
+	"title",
+	"first_name",
+	"last_name",
+	"skills"
+  ],
+  "availableFields": [
+	{"field": "title", "fieldName": "Title"},
+	{"field": "first_name", "fieldName": "First Name"},
+	{"field": "last_name", "fieldName": "Last Name"},
+	{"field": "job_title", "fieldName": "Job Title"},
+	{"field": "email", "fieldName": "Email"},
+	{"field": "company", "fieldName": "Company"},
+	{"field": "department", "fieldName": "Department"},
+	{"field": "languages", "fieldName": "Languages"},
+	{"field": "university", "fieldName": "University"},
+	{"field": "self_decription", "fieldName": "Self Description"},
+	{"field": "skills", "fieldName": "Skills"}
+  ]
+}
+
