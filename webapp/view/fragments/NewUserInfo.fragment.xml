@@ -1,0 +1,20 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:f="sap.f"
+		xmlns:card="sap.f.cards">
+	<f:Card height="100%">
+		<f:header>
+			<card:Header title="{i18n>userInfoNewUser}" subtitle="__SubTitile__"/>
+		</f:header>
+		<f:content>
+			<VBox alignItems="Center">
+				<f:Avatar src="sap-icon://add-employee"
+						  displaySize="XL"
+						  displayShape="Square"
+						  class="sapUiSmallMarginTop"
+						  press="onZZZz"/>
+			</VBox>
+		</f:content>
+	</f:Card>
+</core:FragmentDefinition>

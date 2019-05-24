@@ -1,58 +1,62 @@
 <mvc:View
-	controllerName="ui5con2019.controller.View1"
-	xmlns:mvc="sap.ui.core.mvc"
-	displayBlock="true"
-	xmlns="sap.m"
-	xmlns:grid="sap.ui.layout.cssgrid"
-	xmlns:core="sap.ui.core"
-	xmlns:f="sap.f"
-	xmlns:form="sap.ui.layout.form"
-	xmlns:card="sap.f.cards">
-	<Panel id="panelCSSGrid">
-		<headerToolbar>
-			<Toolbar height="3rem">
-				<Title text="UI5 test app"/>
-			</Toolbar>
-		</headerToolbar>
-		<content>
-			<grid:CSSGrid id="grid1">
-				<grid:customLayout>
-					<grid:GridResponsiveLayout layoutChange="onLayoutChange">
-						<grid:layoutS>
-							<grid:GridSettings
-									gridTemplateColumns="repeat(auto-fit, 8rem)"
-									gridRowGap="1rem"
-									gridColumnGap="1rem">
-							</grid:GridSettings>
-						</grid:layoutS>
-						<grid:layout>
-							<grid:GridSettings
-									gridTemplateColumns="repeat(auto-fit, 12rem)"
-									gridRowGap="1rem"
-									gridColumnGap="1rem">
-							</grid:GridSettings>
-						</grid:layout>
-						<grid:layoutXL>
-							<grid:GridSettings
-									gridTemplateColumns="repeat(auto-fit, 20rem)"
-									gridRowGap="1rem"
-									gridColumnGap="1rem">
-							</grid:GridSettings>
-						</grid:layoutXL>
-					</grid:GridResponsiveLayout>
-				</grid:customLayout>
-				<grid:items>
-				<!-- TODO: Use data binding instead -->
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-					<core:Fragment fragmentName="ui5con2019.view.UserInfo" type="XML"/>
-				</grid:items>
-			</grid:CSSGrid>
-			<Input value="{zzz>/value}" change="onChange" />
-			<Text text="{zzz>/value}" />
-		</content>
-	</Panel>
+		controllerName="ui5con2019.controller.View1"
+		xmlns:mvc="sap.ui.core.mvc"
+		displayBlock="true"
+		xmlns="sap.m"
+		xmlns:grid="sap.ui.layout.cssgrid"
+		xmlns:core="sap.ui.core">
+	<App>
+		<Page title="{i18n>appTitle}" class="sapUiContentPadding">
+			<subHeader>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Title text="Toolbar"/>
+				</Toolbar>
+			</subHeader>
+			<content>
+				<grid:CSSGrid>
+					<grid:customLayout>
+						<grid:GridResponsiveLayout layoutChange="onLayoutChange">
+							<grid:layoutS>
+								<grid:GridSettings
+										gridTemplateColumns="repeat(auto-fit, 8rem)"
+										gridRowGap="1rem"
+										gridColumnGap="1rem">
+								</grid:GridSettings>
+							</grid:layoutS>
+							<grid:layout>
+								<grid:GridSettings
+										gridTemplateColumns="repeat(auto-fit, 12rem)"
+										gridRowGap="1rem"
+										gridColumnGap="1rem">
+								</grid:GridSettings>
+							</grid:layout>
+							<grid:layoutXL>
+								<grid:GridSettings
+										gridTemplateColumns="repeat(auto-fit, 20rem)"
+										gridRowGap="1rem"
+										gridColumnGap="1rem">
+								</grid:GridSettings>
+							</grid:layoutXL>
+						</grid:GridResponsiveLayout>
+					</grid:customLayout>
+
+					<grid:items>
+						<!-- TODO: Use data binding instead -->
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+						<core:Fragment fragmentName="ui5con2019.view.fragments.NewUserInfo" type="XML"/>
+					</grid:items>
+				</grid:CSSGrid>
+
+
+				<Input value="{zzz>/value}" change="onChange"/>
+				<Text text="{zzz>/value}"/>
+			</content>
+		</Page>
+	</App>
 </mvc:View>

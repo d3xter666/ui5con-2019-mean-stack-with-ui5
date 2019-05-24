@@ -1,0 +1,114 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:f="sap.f"
+		xmlns:form="sap.ui.layout.form"
+		xmlns:card="sap.f.cards">
+	<f:Card height="100%">
+		<f:header>
+			<card:Header title="{i18n>userInfoTitle}" subtitle="__SubTitile__"/>
+		</f:header>
+		<f:content>
+			<VBox>
+				<form:SimpleForm
+						editable="false"
+						layout="ResponsiveGridLayout">
+					<form:content>
+						<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
+
+						<Label text="{i18n>userInfoTitle}"/>
+						<Text text="{title}"/>
+						<Select
+								forceSelection="false"
+								selectedKey="{title}"
+								items="{
+									path: 'userMeta>/titles'
+								}">
+							<core:Item key="{title}" text="{title}"/>
+						</Select>
+
+						<Label text="{i18n>userInfoFirstName}"/>
+						<Text text="{first_name}"/>
+						<Input value="{first_name}"/>
+
+						<Label text="{i18n>userInfoLastName}"/>
+						<Text text="{last_name}"/>
+						<Input value="{last_name}"/>
+
+						<Label text="{i18n>userInfoEmail}"/>
+						<Text text="{email}"/>
+						<Input value="{email}" type="Email"/>
+
+						<Label text="{i18n>userInfoJobTitle}"/>
+						<Text text="{job_title}"/>
+						<Select
+								forceSelection="false"
+								selectedKey="{job_title}"
+								items="{
+									path: 'userMeta>/job_titles'
+								}">
+							<core:Item key="{job_title}" text="{job_title}"/>
+						</Select>
+
+						<Label text="{i18n>userInfoCompany}"/>
+						<Text text="{company}"/>
+						<Select
+								forceSelection="false"
+								selectedKey="{company}"
+								items="{
+									path: 'userMeta>/companies'
+								}">
+							<core:Item key="{company}" text="{company}"/>
+						</Select>
+
+						<Label text="{i18n>userInfoDepartment}"/>
+						<Text text="{department}"/>
+						<Select
+								forceSelection="false"
+								selectedKey="{department}"
+								items="{
+									path: 'userMeta>/departments'
+								}">
+							<core:Item key="{department}" text="{department}"/>
+						</Select>
+
+						<Label text="{i18n>userInfoSpokenLanguages}"/>
+						<Text text="{languages}"/>
+						<MultiComboBox
+								selectedKeys="{languages}"
+								items="{
+									path: 'userMeta>/languages'
+								}">
+							<core:Item key="{lang}" text="{lang}"/>
+						</MultiComboBox>
+
+						<Label text="{i18n>userInfoUniversity}"/>
+						<Text text="{university}"/>
+						<Input value="{university}"/>
+
+						<Label text="{i18n>userInfoSkills}"/>
+						<Text text="{skills}"/>
+						<MultiComboBox
+								selectedKeys="{skills}"
+								items="{
+									path: 'userMeta>/skills'
+								}">
+							<core:Item key="{skill}" text="{skill}"/>
+						</MultiComboBox>
+
+						<Label text="{i18n>userInfoSelfDescription}"/>
+						<Text text="{self_decription}"/>
+						<TextArea value="{self_decription}"/>
+					</form:content>
+				</form:SimpleForm>
+
+				<OverflowToolbar design="Solid" class="sapContrast">
+					<ToolbarSpacer/>
+					<Button icon="sap-icon://edit" type="Transparent"/>
+					<Button icon="sap-icon://save" type="Transparent"/>
+					<Button icon="sap-icon://delete" type="Transparent"/>
+				</OverflowToolbar>
+			</VBox>
+		</f:content>
+	</f:Card>
+</core:FragmentDefinition>
