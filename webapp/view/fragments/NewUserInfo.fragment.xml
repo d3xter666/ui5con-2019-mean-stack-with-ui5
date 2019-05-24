@@ -13,7 +13,7 @@
 						  displaySize="XL"
 						  displayShape="Square"
 						  class="sapUiSmallMarginTop"
-						  press="onZZZz"/>
+						  press="handleNewItemPress"/>
 			</VBox>
 		</f:content>
 	</f:Card>

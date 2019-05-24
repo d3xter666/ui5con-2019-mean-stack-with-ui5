@@ -14,9 +14,11 @@
 				</Toolbar>
 			</subHeader>
 			<content>
-				<grid:CSSGrid items="{
-									path: '/'
-								}">
+				<grid:CSSGrid
+						id="gridLayout"
+						items="{
+							path: '/'
+						}">
 
 					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
 
