@@ -407,8 +407,26 @@ sap.ui.define([
             const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
 
             aData = JSON.parse(oModel.getJSON());
-            aData.push({});
+            // Create new container in "editable mode"
+            aData.push({meta: {editable: true}});
             oModel.setData(aData);
+        },
+
+        handleItemEdit(): void {
+            // ToDo: Make a copy of the data
+            // ToDo: enter edit mode
+        },
+
+        handleItemCancel(): void {
+            // ToDo: Restore data
+        },
+
+        handleItemSave(): void {
+            // ToDo: Persist data (send backend request)
+        },
+
+        handleItemDelete(): void {
+            // ToDo: remove item from models array and save
         },
 
         onChange() {

@@ -6,19 +6,20 @@
 		xmlns:card="sap.f.cards">
 	<f:Card height="100%">
 		<f:header>
-			<card:Header title="{i18n>userInfoTitle}" subtitle="__SubTitile__"/>
+			<card:Header title="{= ${title} + ' ' + ${first_name} + ' ' + ${last_name} }" subtitle="{company}"/>
 		</f:header>
 		<f:content>
 			<VBox>
 				<form:SimpleForm
-						editable="false"
+						editable="{meta/editable}"
 						layout="ResponsiveGridLayout">
 					<form:content>
 						<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
 
 						<Label text="{i18n>userInfoTitle}"/>
-						<Text text="{title}"/>
-						<Select selectedKey="{title}"
+						<Text text="{title}" visible="{= ${meta/editable} !== true}"/>
+						<Select visible="{= ${meta/editable} === true}"
+								selectedKey="{title}"
 								items="{
 									path: 'userMeta>/titles',
 									templateShareable: false
@@ -27,20 +28,21 @@
 						</Select>
 
 						<Label text="{i18n>userInfoFirstName}"/>
-						<Text text="{first_name}"/>
-						<Input value="{first_name}"/>
+						<Text text="{first_name}" visible="{= ${meta/editable} !== true}" />
+						<Input value="{first_name}" visible="{= ${meta/editable} === true}" />
 
 						<Label text="{i18n>userInfoLastName}"/>
-						<Text text="{last_name}"/>
-						<Input value="{last_name}"/>
+						<Text text="{last_name}" visible="{= ${meta/editable} !== true}" />
+						<Input value="{last_name}" visible="{= ${meta/editable} === true}" />
 
 						<Label text="{i18n>userInfoEmail}"/>
-						<Text text="{email}"/>
-						<Input value="{email}" type="Email"/>
+						<Text text="{email}" visible="{= ${meta/editable} !== true}" />
+						<Input value="{email}" type="Email" visible="{= ${meta/editable} === true}"/>
 
 						<Label text="{i18n>userInfoJobTitle}"/>
-						<Text text="{job_title}"/>
-						<Select selectedKey="{job_title}"
+						<Text text="{job_title}" visible="{= ${meta/editable} === true}" />
+						<Select visible="{= ${meta/editable} === true}"
+								selectedKey="{job_title}"
 								items="{
 									path: 'userMeta>/job_titles',
 									templateShareable: false
@@ -49,8 +51,9 @@
 						</Select>
 
 						<Label text="{i18n>userInfoCompany}"/>
-						<Text text="{company}"/>
-						<Select selectedKey="{company}"
+						<Text text="{company}" visible="{= ${meta/editable} !== true}" />
+						<Select visible="{= ${meta/editable} === true}"
+								selectedKey="{company}"
 								items="{
 									path: 'userMeta>/companies',
 									templateShareable: false
@@ -59,8 +62,9 @@
 						</Select>
 
 						<Label text="{i18n>userInfoDepartment}"/>
-						<Text text="{department}"/>
-						<Select selectedKey="{department}"
+						<Text text="{department}" visible="{= ${meta/editable} !== true}" />
+						<Select visible="{= ${meta/editable} === true}"
+								selectedKey="{department}"
 								items="{
 									path: 'userMeta>/departments',
 									templateShareable: false
@@ -69,8 +73,8 @@
 						</Select>
 
 						<Label text="{i18n>userInfoSpokenLanguages}"/>
-						<Text text="{languages}"/>
-						<MultiComboBox
+						<Text text="{languages}" visible="{= ${meta/editable} === true}" />
+						<MultiComboBox visible="{= ${meta/editable} === true}"
 								selectedKeys="{languages}"
 								items="{
 									path: 'userMeta>/languages',
@@ -80,12 +84,13 @@
 						</MultiComboBox>
 
 						<Label text="{i18n>userInfoUniversity}"/>
-						<Text text="{university}"/>
-						<Input value="{university}"/>
+						<Text text="{university}" visible="{= ${meta/editable} !== true}" />
+						<Input value="{university}" visible="{= ${meta/editable} === true}"/>
 
 						<Label text="{i18n>userInfoSkills}"/>
-						<Text text="{skills}"/>
+						<Text text="{skills}" visible="{= ${meta/editable} !== true}" />
 						<MultiComboBox
+								visible="{= ${meta/editable} === true}"
 								selectedKeys="{skills}"
 								items="{
 									path: 'userMeta>/skills',
@@ -95,16 +100,18 @@
 						</MultiComboBox>
 
 						<Label text="{i18n>userInfoSelfDescription}"/>
-						<Text text="{self_decription}"/>
-						<TextArea value="{self_decription}"/>
+						<Text text="{self_decription}" visible="{= ${meta/editable} !== true}" />
+						<TextArea value="{self_decription}" visible="{= ${meta/editable} === true}" />
 					</form:content>
 				</form:SimpleForm>
 
 				<OverflowToolbar design="Solid" class="sapContrast">
 					<ToolbarSpacer/>
-					<Button icon="sap-icon://edit" type="Transparent"/>
-					<Button icon="sap-icon://save" type="Transparent"/>
-					<Button icon="sap-icon://delete" type="Transparent"/>
+					<Button icon="sap-icon://edit" type="Transparent" press="handleItemEdit" visible="{= ${meta/editable} !== true}" />
+					<Button icon="sap-icon://delete" type="Transparent" press="handleItemDelete" visible="{= ${meta/editable} !== true}"/>
+
+					<Button icon="sap-icon://decline" type="Transparent" press="handleItemCancel" visible="{= ${meta/editable} === true}" />
+					<Button icon="sap-icon://save" type="Transparent" press="handleItemSave" visible="{= ${meta/editable} === true}"/>
 				</OverflowToolbar>
 			</VBox>
 		</f:content>
