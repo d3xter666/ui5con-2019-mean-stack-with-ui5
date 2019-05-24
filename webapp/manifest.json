@@ -59,11 +59,14 @@
 			"cozy": true
 		},
 		"models": {
-		  "": {
-			"type": "sap.ui.model.json.JSONModel"
-		  },
+			"": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/mock-data.json",
+				"preload": true
+			},
 			"userMeta": {
-				"dataSource": "backendAPI",
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/mock-user-meta.json",
 				"preload": true
 			},
 			"i18n": {
