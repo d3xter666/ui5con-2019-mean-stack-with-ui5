@@ -59,7 +59,10 @@
 			"cozy": true
 		},
 		"models": {
-			"zzz": {
+		  "": {
+			"type": "sap.ui.model.json.JSONModel"
+		  },
+			"userMeta": {
 				"dataSource": "backendAPI",
 				"preload": true
 			},
