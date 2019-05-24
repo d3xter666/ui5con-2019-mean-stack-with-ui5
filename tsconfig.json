@@ -7,8 +7,6 @@
 	"strictNullChecks": true,
 	"module": "none",
 	"target": "es5",
-	"allowJs": true,
-	"checkJs": true,
 	"types": [
 	  "@openui5/ts-types"
 	]

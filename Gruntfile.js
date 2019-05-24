@@ -9,7 +9,7 @@ module.exports = function (grunt) {
 		ts: {
 			default: config,
 			dev: Object.assign({}, config, {
-				watch: '.'
+				watch: './webapp/'
 			})
 		}
 	});

@@ -34,6 +34,6 @@
 	"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
 	"frontend:ui5_build": "ui5 build",
 	"frontend:build": "npm run frontend:ts_compile && npm run frontend:ui5_build",
-	"frontend:test": "grunt unit_and_integration_tests && npm run lint"
+	"frontend:test": "grunt unit_and_integration_tests && npm run frontend:tslint"
   }
 }
