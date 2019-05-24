@@ -1,104 +1,104 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		id: "ui5con2019",
-		type: "application",
-		i18n: "i18n/i18n.properties",
-		applicationVersion: {
-			version: "1.0.0",
+		"id": "ui5con2019",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "1.0.0"
 		},
-		title: "{{appTitle}}",
-		description: "{{appDescription}}",
-		sourceTemplate: {
-			id: "ui5template.basicSAPUI5ApplicationProject",
-			version: "1.40.12",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.40.12"
 		},
-		dataSources: {
-		  backendAPI: {
-			uri: "/api/v2/zzz",
-			type: "JSON",
-		  },
-		},
+		"dataSources": {
+		  "backendAPI": {
+			"uri": "/api/v2/zzz",
+			"type": "JSON"
+		  }
+		}
 	},
 
 	"sap.ui": {
-		technology: "UI5",
-		icons: {
+		"technology": "UI5",
+		"icons": {
 			"icon": "",
 			"favIcon": "",
 			"phone": "",
 			"phone@2": "",
 			"tablet": "",
-			"tablet@2": "",
+			"tablet@2": ""
 		},
-		deviceTypes: {
-			desktop: true,
-			tablet: true,
-			phone: true,
-		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
 	},
 
 	"sap.ui5": {
-		flexEnabled: false,
-		rootView: {
-			viewName: "ui5con2019.view.View1",
-			type: "XML",
-			async: true,
-			id: "View1",
+		"flexEnabled": false,
+		"rootView": {
+			"viewName": "ui5con2019.view.View1",
+			"type": "XML",
+			"async": true,
+			"id": "View1"
 		},
-		dependencies: {
-			minUI5Version: "1.60.1",
-			libs: {
+		"dependencies": {
+			"minUI5Version": "1.60.1",
+			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {},
-			},
+				"sap.m": {}
+			}
 		},
-		contentDensities: {
-			compact: true,
-			cozy: true,
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
 		},
-		models: {
-			zzz: {
-				dataSource: "backendAPI",
-				preload: true,
+		"models": {
+			"zzz": {
+				"dataSource": "backendAPI",
+				"preload": true
 			},
-			i18n: {
-				type: "sap.ui.model.resource.ResourceModel",
-				settings: {
-					bundleName: "ui5con2019.i18n.i18n",
-				},
-			},
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "ui5con2019.i18n.i18n"
+				}
+			}
 		},
-		resources: {
-			css: [{
-				uri: "css/style.css",
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"async": true,
+				"viewPath": "ui5con2019.view",
+				"controlAggregation": "pages",
+				"controlId": "app",
+				"clearControlAggregation": false
+			},
+			"routes": [{
+				"name": "RouteView1",
+				"pattern": "RouteView1",
+				"target": ["TargetView1"]
 			}],
-		},
-		routing: {
-			config: {
-				routerClass: "sap.m.routing.Router",
-				viewType: "XML",
-				async: true,
-				viewPath: "ui5con2019.view",
-				controlAggregation: "pages",
-				controlId: "app",
-				clearControlAggregation: false,
-			},
-			routes: [{
-				name: "RouteView1",
-				pattern: "RouteView1",
-				target: ["TargetView1"],
-			}],
-			targets: {
-				TargetView1: {
-					viewType: "XML",
-					transition: "slide",
-					clearControlAggregation: false,
-					viewId: "View1",
-					viewName: "View1",
-				},
-			},
-		},
-	},
-};
+			"targets": {
+				"TargetView1": {
+					"viewType": "XML",
+					"transition": "slide",
+					"clearControlAggregation": false,
+					"viewId": "View1",
+					"viewName": "View1"
+				}
+			}
+		}
+	}
+}
