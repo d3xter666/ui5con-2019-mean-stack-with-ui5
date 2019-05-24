@@ -1,26 +1,26 @@
+// https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
 {
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
   "compilerOptions": {
-	// path to output directory
-	"outDir": "./webapp/",
-	// allow sourcemap support
+	"rootDir": "./webapp",
 	"sourceMap": true,
-	// enable strict null checks as a best practice
 	"strictNullChecks": true,
-	// specify module code generation. "none" because UI5 has its own unique modules system.
 	"module": "none",
-	// specify ECMAScript target version
 	"target": "es5",
-	// allow a partial TypeScript and JavaScript codebase
 	"allowJs": true,
-	"declaration": true,
-	// We are not interested in generating any code.
-	"noEmit": true,
 	"checkJs": true,
 	"types": [
 	  "@openui5/ts-types"
 	]
   },
   "include": [
-	"./src/"
+	"./webapp/*.ts",
+	"./webapp/**/*.ts"
+  ],
+  "exclude": [
+	"./test/*",
+	"./test/**/*",
+	"./node_modules",
+	"./backend"
   ]
 }

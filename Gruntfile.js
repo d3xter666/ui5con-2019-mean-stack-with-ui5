@@ -1,18 +1,19 @@
 module.exports = function (grunt) {
 	"use strict";
 
-	grunt.initConfig({
-        ts: {
-            default : {
-				src: ["./webapp/**/*.ts", "!node_modules/**/*.ts", "!dist**/*.ts"],
-				options: {
-					allowJs: false
-				},
-				watch: "."
-			}
+	const config = {
+		tsconfig: './tsconfig.json'
+	};
 
-        }
-    });
-    grunt.loadNpmTasks("grunt-ts");
-    grunt.registerTask("default", ["ts"]);
+	grunt.initConfig({
+		ts: {
+			default: config,
+			dev: Object.assign({}, config, {
+				watch: '.'
+			})
+		}
+	});
+
+	grunt.loadNpmTasks("grunt-ts");
+	grunt.registerTask("default", ["ts"]);
 };

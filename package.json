@@ -27,10 +27,13 @@
 	"typescript": "^3.4.5"
   },
   "scripts": {
-	"server:backend_prod": "babel-node ./backend/index.js",
-	"server:backend_dev": "nodemon --exec npm run server:backend.prod",
-	"test": "grunt unit_and_integration_tests && npm run lint",
-	"start": "grunt ts && ui5 build",
-	"lint": "tslint ./webapp/*.ts ./webapp/**/*.ts"
+	"backend:run_prod": "babel-node ./backend/index.js",
+	"backend:run_dev": "nodemon --exec npm run backend:run_prod",
+	"frontend:ts_watch": "grunt ts:dev",
+	"frontend:ts_compile": "grunt ts:default",
+	"frontend:tslint": "tslint ./webapp/*.ts ./webapp/**/*.ts",
+	"frontend:ui5_build": "ui5 build",
+	"frontend:build": "npm run frontend:ts_compile && npm run frontend:ui5_build",
+	"frontend:test": "grunt unit_and_integration_tests && npm run lint"
   }
 }
