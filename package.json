@@ -1,39 +1,42 @@
 {
-  "name": "mean_with_ui5",
-  "version": "0.0.1",
-  "description": "",
-  "private": true,
-  "dependencies": {
-	"body-parser": "^1.19.0",
-	"cors": "^2.8.5",
-	"express": "^4.16.4",
-	"express-graphql": "^0.8.0",
-	"graphql": "^14.3.0",
-	"graphql-tools": "^4.0.4",
-	"merge-graphql-schemas": "^1.5.8",
-	"mongoose": "^5.5.6"
-  },
-  "devDependencies": {
-	"@babel/cli": "^7.4.4",
-	"@babel/core": "^7.4.4",
-	"@babel/node": "^7.2.2",
-	"@babel/preset-env": "^7.4.4",
-	"@openui5/ts-types": "^1.64.1",
-	"@ui5/cli": "^1.3.0",
-	"grunt": "^1.0.4",
-	"grunt-ts": "^6.0.0-beta.22",
-	"nodemon": "^1.19.0",
-	"tslint": "^5.16.0",
-	"typescript": "^3.4.5"
-  },
-  "scripts": {
-	"backend:run_prod": "babel-node ./backend/index.js",
-	"backend:run_dev": "nodemon --exec npm run backend:run_prod",
-	"frontend:ts_watch": "grunt ts:dev",
-	"frontend:ts_compile": "grunt ts:default",
-	"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
-	"frontend:ui5_build": "ui5 build",
-	"frontend:build": "npm run frontend:ts_compile && npm run frontend:ui5_build",
-	"frontend:test": "grunt unit_and_integration_tests && npm run frontend:tslint"
-  }
+	"name": "mean_with_ui5",
+	"version": "0.0.1",
+	"description": "",
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.16.4",
+		"express-graphql": "^0.8.0",
+		"graphql": "^14.3.0",
+		"graphql-tools": "^4.0.4",
+		"merge-graphql-schemas": "^1.5.8",
+		"mongoose": "^5.5.6"
+	},
+	"devDependencies": {
+		"@babel/cli": "^7.4.4",
+		"@babel/core": "^7.4.4",
+		"@babel/node": "^7.2.2",
+		"@babel/preset-env": "^7.4.4",
+		"@openui5/ts-types": "^1.65.1",
+		"@ui5/cli": "^1.3.0",
+		"grunt": "^1.0.4",
+		"grunt-ts": "^6.0.0-beta.22",
+		"http-server": "^0.11.1",
+		"install": "^0.12.2",
+		"nodemon": "^1.19.0",
+		"npm": "^6.9.0",
+		"tslint": "^5.16.0",
+		"typescript": "^3.4.5"
+	},
+	"scripts": {
+		"backend:run_prod": "babel-node ./backend/index.js",
+		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
+		"frontend:ts_watch": "grunt ts:dev",
+		"frontend:ts_compile": "grunt ts:default",
+		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
+		"frontend:ui5_build": "ui5 build",
+		"frontend:build": "npm run frontend:test && npm run frontend:ts_compile && npm run frontend:ui5_build",
+		"frontend:test": "grunt unit_and_integration_tests && npm run frontend:tslint"
+	}
 }
