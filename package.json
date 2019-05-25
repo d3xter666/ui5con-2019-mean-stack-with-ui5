@@ -1,7 +1,11 @@
 {
 	"name": "mean_with_ui5",
-	"version": "0.0.1",
-	"description": "",
+	"version": "1.0.0",
+	"description": "Build UI5 full stack app with TypeScript & Node + Express + GraphQL + MongoDB backend",
+	"contributors": [
+	  {"name": "Petya Markova-Bogdanova", "email": "petya.markova-bogdanova@sap.com"},
+	  {"name": "Yavor Ivanov", "email": "yavor.ivanov@sap.com"}
+	],
 	"private": true,
 	"dependencies": {
 		"body-parser": "^1.19.0",
