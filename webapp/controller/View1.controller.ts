@@ -4,6 +4,7 @@ sap.ui.define([
 ], (Controller: sap.ui.core.mvc.Controller, Fragment: sap.ui.core.Fragment) => {
     "use strict";
 
+    // @ts-ignore
     return Controller.extend("ui5con2019.controller.BaseController", {
         onInit(): void {
             this._loadAddNewItem();
