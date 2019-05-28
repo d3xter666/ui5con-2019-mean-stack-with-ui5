@@ -1,18 +1,18 @@
-// The User schema.
-import User from "../../../models/User";
+// The Record schema.
+import Record from "../../../models/Record";
 
 export default {
 	Query: {
-		user: (root, args) => {
+		record: (root, args) => {
 			return new Promise((resolve, reject) => {
-				User.findOne(args).exec((err, res) => {
+				Record.findOne(args).exec((err, res) => {
 					err ? reject(err) : resolve(res);
 				});
 			});
 		},
-		users: () => {
+		records: () => {
 			return new Promise((resolve, reject) => {
-				User.find({})
+				Record.find({})
 					.populate()
 					.exec((err, res) => {
 						err ? reject(err) : resolve(res);
@@ -21,27 +21,27 @@ export default {
 		}
 	},
 	Mutation: {
-		addUser: (root, {id, name, email}) => {
-			const newUser = new User({id, name, email});
+		addRecord: (root, {id, name, email}) => {
+			const newRecord = new Record({id, name, email});
 
 			return new Promise((resolve, reject) => {
-				newUser.save((err, res) => {
+				newRecord.save((err, res) => {
 					err ? reject(err) : resolve(res);
 				});
 			});
 		},
-		editUser: (root, {id, name, email}) => {
+		editRecord: (root, {id, name, email}) => {
 			return new Promise((resolve, reject) => {
-				User.findOneAndUpdate({id}, {$set: {name, email}}).exec(
+				Record.findOneAndUpdate({id}, {$set: {name, email}}).exec(
 					(err, res) => {
 						err ? reject(err) : resolve(res);
 					}
 				);
 			});
 		},
-		deleteUser: (root, args) => {
+		deleteRecord: (root, args) => {
 			return new Promise((resolve, reject) => {
-				User.findOneAndRemove(args).exec((err, res) => {
+				Record.findOneAndRemove(args).exec((err, res) => {
 					err ? reject(err) : resolve(res);
 				});
 			});

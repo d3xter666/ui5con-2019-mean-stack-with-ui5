@@ -1,6 +1,6 @@
 import { mergeTypes } from "merge-graphql-schemas";
-import User from "./User/";
+import Record from "./Record/";
 
-const typeDefs = [User];
+const typeDefs = [Record];
 
 export default mergeTypes(typeDefs, { all: true });

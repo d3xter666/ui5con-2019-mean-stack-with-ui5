@@ -1,7 +1,7 @@
 import { mergeResolvers } from "merge-graphql-schemas";
 
-import User from "./User/";
+import Record from "./Record/";
 
-const resolvers = [User];
+const resolvers = [Record];
 
 export default mergeResolvers(resolvers);

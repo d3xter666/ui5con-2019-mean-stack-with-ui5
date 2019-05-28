@@ -3,8 +3,8 @@ import expressGraphql from "express-graphql";
 import mongoose from "mongoose";
 import bodyParser from "body-parser";
 import cors from "cors";
-
 import schema from "./graphql/";
+import dataImporter from "./mock-data/import-data";
 
 const app = express();
 const PORT = process.env.PORT || "4000";
@@ -19,7 +19,8 @@ mongoose
 			useNewUrlParser: true
 		}
 	)
-	.then(() => console.log("MongoDB connected"))
+	.then(dataImporter)
+	.then(() => console.log("Mongo collection loaded"))
 	.catch(err => console.log(err));
 
 app.use(
