@@ -1,16 +1,26 @@
 export default `
   type Record {
-    id: String!
-    name: String!
-    email: String!
+		id: Int!
+		avatar: String
+		title: String
+		first_name: String
+		last_name: String
+		job_title: String
+		email: String
+		company: String
+		department: String
+		languages: [String!]
+		university: String
+		self_decription: String
+		skills: [String!]
   }
   type Query {
-    record(id: String!): Record
+    record(id: Int!): Record
     records: [Record]
   }
   type Mutation {
-    addRecord(id: String!, name: String!, email: String!): Record
-    editRecord(id: String, name: String, email: String): Record
-    deleteRecord(id: String, name: String, email: String): Record
+    addRecord(id: Int, avatar: String, title: String, first_name: String, last_name: String, job_title: String, email: String, company: String, department: String, languages: [String], university: String, self_decription: String, skills: [String]): Record
+    editRecord(id: Int!, avatar: String, title: String, first_name: String, last_name: String, job_title: String, email: String, company: String, department: String, languages: [String], university: String, self_decription: String, skills: [String]): Record
+    deleteRecord(id: Int!): Record
   }
 `;

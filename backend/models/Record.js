@@ -5,57 +5,45 @@ const Schema = mongoose.Schema;
 // Create the Record Schema.
 const RecordSchema = new Schema({
 	id: {
-		type: String,
+		type: Number,
 		required: true,
 		unique: true
 	},
 	avatar: {
-		type: String,
-		required: true
+		type: String
 	},
 	title: {
-		type: String,
-		required: true
+		type: String
 	},
 	first_name: {
-		type: String,
-		required: true
+		type: String
 	},
 	last_name: {
-		type: String,
-		required: true
+		type: String
 	},
 	job_title: {
-		type: String,
-		required: true
+		type: String
 	},
 	email: {
-		type: String,
-		required: true
+		type: String
 	},
 	company: {
-		type: String,
-		required: true
+		type: String
 	},
 	department: {
-		type: String,
-		required: true
+		type: String
 	},
 	languages: {
-		type: [String],
-		required: true
+		type: [String]
 	},
 	university: {
-		type: String,
-		required: true
+		type: String
 	},
 	self_decription: {
-		type: String,
-		required: true
+		type: String
 	},
 	skills: {
-		type: [String],
-		required: true
+		type: [String]
 	}
 });
 

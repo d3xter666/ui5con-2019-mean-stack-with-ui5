@@ -21,8 +21,8 @@ export default {
 		}
 	},
 	Mutation: {
-		addRecord: (root, {id, name, email}) => {
-			const newRecord = new Record({id, name, email});
+		addRecord: (root, args) => {
+			const newRecord = new Record(args);
 
 			return new Promise((resolve, reject) => {
 				newRecord.save((err, res) => {
@@ -30,18 +30,18 @@ export default {
 				});
 			});
 		},
-		editRecord: (root, {id, name, email}) => {
+		editRecord: (root, args) => {
 			return new Promise((resolve, reject) => {
-				Record.findOneAndUpdate({id}, {$set: {name, email}}).exec(
+				Record.findOneAndUpdate({id: args.id}, {$set: args}, {new: true}).exec(
 					(err, res) => {
 						err ? reject(err) : resolve(res);
 					}
 				);
 			});
 		},
-		deleteRecord: (root, args) => {
+		deleteRecord: (root, {id}) => {
 			return new Promise((resolve, reject) => {
-				Record.findOneAndRemove(args).exec((err, res) => {
+				Record.findOneAndRemove({id: id}).exec((err, res) => {
 					err ? reject(err) : resolve(res);
 				});
 			});
