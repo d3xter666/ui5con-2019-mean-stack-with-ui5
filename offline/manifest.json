@@ -1,0 +1,14 @@
+{
+	"name": "UI5Con 2019: 'MEAN Stack'.replace('A', 'UI5')",
+	"short_name": "UI5Con2019MEANApp",
+	"icons": [
+		{
+			"src": "./SAP_logo.png",
+			"type": "image/png",
+			"sizes": "192x192"
+		}],
+	"start_url": "../index.html",
+	"display": "standalone",
+	"background_color": "#3E4EB8",
+	"theme_color": "#2F3BA2"
+  }

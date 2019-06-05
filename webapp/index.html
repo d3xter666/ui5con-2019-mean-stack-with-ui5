@@ -2,7 +2,12 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="manifest" href="../offline/manifest.json">
+		<!-- App description -->
+		<meta name="description" content="UI5Con 2019 Demo Application">
+		<!-- App theme color -->
+		<meta name="theme-color" content="#2F3BA2" />
 		<title>UI5Con 2019: "MEAN Stack".replace("A", "UI5")</title>
 
 		<!--	SAPUI5 1.65. Important as should align with TS definitions	-->
@@ -17,6 +22,17 @@
 			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-async="true"
 			data-sap-ui-frameOptions="trusted">
+		</script>
+		<script>
+			// CODELAB: Register service worker.
+			if ('serviceWorker' in navigator) {
+			window.addEventListener('load', () => {
+				navigator.serviceWorker.register('./service-worker.js')
+					.then((reg) => {
+					console.log('Service worker registered.', reg);
+					});
+			});
+			}
 		</script>
 	</head>
 	<body class="sapUiBody">
