@@ -4,11 +4,21 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 // Add event listener for appinstalled event
 window.addEventListener('appinstalled', logAppInstalled);
 
+
+
 function saveBeforeInstallPromptEvent(evt) {
+	var deferredInstallPrompt = evt,
+		installButton = document.getElementById("installer").getElementsByClassName("button")[0];
+
+	// Add event listener for appinstalled event
+	installButton.addEventListener('click', installButtonClicked.bind(false, deferredInstallPrompt));
 	// Add code to save event & show the install button.
-	deferredInstallPrompt = evt;
+
 	installButton.removeAttribute('hidden');
 
+}
+
+function installButtonClicked(deferredInstallPrompt, evt) {
 	// Add code show install prompt & hide the install button.
 	deferredInstallPrompt.prompt();
 	// Hide the install button, it can't be called twice.
