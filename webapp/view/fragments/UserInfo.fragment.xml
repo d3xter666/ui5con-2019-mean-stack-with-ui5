@@ -2,7 +2,6 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core"
 		xmlns:f="sap.f"
-		xmlns:form="sap.ui.layout.form"
 		xmlns:card="sap.f.cards">
 	<f:Card>
 		<f:header>
@@ -10,135 +9,8 @@
 		</f:header>
 		<f:content>
 			<VBox>
-				<form:SimpleForm
-						editable="{meta/editable}"
-						layout="ResponsiveGridLayout">
-					<form:content>
-						<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
-
-						<VBox visible="{= [null, undefined].indexOf(${title}) === -1 }">
-							<Label text="{i18n>userInfoTitle}"/>
-							<Text text="{title}" visible="{= ${meta/editable} !== true}"/>
-							<ComboBox visible="{= ${meta/editable} === true}"
-									  selectedKey="{title}"
-									  items="{
-									path: 'userMeta>/titles',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>title}" text="{userMeta>title}"/>
-							</ComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${first_name}) === -1 }">
-							<Label text="{i18n>userInfoFirstName}"/>
-							<Text text="{first_name}" visible="{= ${meta/editable} !== true}"/>
-							<Input value="{first_name}" visible="{= ${meta/editable} === true}"/>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${last_name}) === -1 }">
-							<Label text="{i18n>userInfoLastName}"/>
-							<Text text="{last_name}" visible="{= ${meta/editable} !== true}"/>
-							<Input value="{last_name}" visible="{= ${meta/editable} === true}"/>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${email}) === -1 }">
-							<Label text="{i18n>userInfoEmail}"/>
-							<Text text="{email}" visible="{= ${meta/editable} !== true}"/>
-							<Input value="{email}" type="Email" visible="{= ${meta/editable} === true}"/>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${job_title}) === -1 }">
-							<Label text="{i18n>userInfoJobTitle}"/>
-							<Text text="{job_title}" visible="{= ${meta/editable} === true}"/>
-							<ComboBox visible="{= ${meta/editable} === true}"
-									  selectedKey="{job_title}"
-									  items="{
-									path: 'userMeta>/job_titles',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>job_title}" text="{userMeta>job_title}"/>
-							</ComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${company}) === -1 }">
-							<Label text="{i18n>userInfoCompany}"/>
-							<Text text="{company}" visible="{= ${meta/editable} !== true}"/>
-							<ComboBox visible="{= ${meta/editable} === true}"
-									  selectedKey="{company}"
-									  items="{
-									path: 'userMeta>/companies',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>company}" text="{userMeta>company}"/>
-							</ComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${department}) === -1 }">
-							<Label text="{i18n>userInfoDepartment}"/>
-							<Text text="{department}" visible="{= ${meta/editable} !== true}"/>
-							<ComboBox visible="{= ${meta/editable} === true}"
-									  selectedKey="{department}"
-									  items="{
-									path: 'userMeta>/departments',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>department}" text="{userMeta>department}"/>
-							</ComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${languages}) === -1 }">
-							<Label text="{i18n>userInfoSpokenLanguages}"/>
-							<Text text="{languages}" visible="{= ${meta/editable} === true}"/>
-							<MultiComboBox visible="{= ${meta/editable} === true}"
-										   selectedKeys="{languages}"
-										   items="{
-									path: 'userMeta>/languages',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>lang}" text="{userMeta>lang}"/>
-							</MultiComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${university}) === -1 }">
-							<Label text="{i18n>userInfoUniversity}"/>
-							<Text text="{university}" visible="{= ${meta/editable} !== true}"/>
-							<Input value="{university}" visible="{= ${meta/editable} === true}"/>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${skills}) === -1 }">
-							<Label text="{i18n>userInfoSkills}"/>
-							<Text text="{skills}" visible="{= ${meta/editable} !== true}"/>
-							<MultiComboBox
-									visible="{= ${meta/editable} === true}"
-									selectedKeys="{skills}"
-									items="{
-									path: 'userMeta>/skills',
-									templateShareable: false
-								}">
-								<core:Item key="{userMeta>skill}" text="{userMeta>skill}"/>
-							</MultiComboBox>
-						</VBox>
-
-						<VBox visible="{= [null, undefined].indexOf(${self_decription}) === -1 }">
-							<Label text="{i18n>userInfoSelfDescription}"/>
-							<Text text="{self_decription}" visible="{= ${meta/editable} !== true}"/>
-							<TextArea value="{self_decription}" visible="{= ${meta/editable} === true}"/>
-						</VBox>
-					</form:content>
-				</form:SimpleForm>
-
-				<OverflowToolbar design="Solid" class="sapContrast">
-					<ToolbarSpacer/>
-					<Button icon="sap-icon://edit" type="Transparent" press="handleItemEdit"
-							visible="{= ${meta/editable} !== true}"/>
-					<Button icon="sap-icon://delete" type="Transparent" press="handleItemDelete"
-							visible="{= ${meta/editable} !== true}"/>
-
-					<Button icon="sap-icon://decline" type="Transparent" press="handleItemCancel"
-							visible="{= ${meta/editable} === true}"/>
-					<Button icon="sap-icon://save" type="Transparent" press="handleItemSave"
-							visible="{= ${meta/editable} === true}"/>
-				</OverflowToolbar>
+				<core:Fragment fragmentName="ui5con2019.view.fragments.UserDisplay" type="XML" visible="{= ${meta/editable} !== true}" />
+				<core:Fragment fragmentName="ui5con2019.view.fragments.UserEdit" type="XML" visible="{= ${meta/editable} === true}" />
 			</VBox>
 		</f:content>
 	</f:Card>

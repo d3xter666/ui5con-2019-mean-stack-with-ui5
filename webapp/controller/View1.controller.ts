@@ -1,7 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
-], (Controller: sap.ui.core.mvc.Controller, Fragment: sap.ui.core.Fragment) => {
+    "ui5con/model/graphql/GraphQLModel",
+], (
+    Controller: sap.ui.core.mvc.Controller,
+    Fragment: sap.ui.core.Fragment,
+    // @ts-ignore
+    GraphQLModel: ui5con.model.graphql.GraphQLModel) => {
     "use strict";
 
     // @ts-ignore
@@ -11,16 +16,21 @@ sap.ui.define([
         },
 
         _loadAddNewItem(): void {
-            // Fragment.load({
-            //     controller: this,
-            //     id: this.getView().getId(),
-            //     name: "ui5con2019.view.fragments.NewUserInfo",
-            //     type: "XML",
-            // }).then((oNewUserFragment) => {
-            //     const oGrid: sap.ui.layout.cssgrid.CSSGrid = this.getView().byId("gridLayout");
-            //
-            //     oGrid.insertItem(oNewUserFragment, 0);
-            // });
+
+//             const request = `{
+//     record(id: 5){
+//       id, first_name, last_name, email
+//     }
+// }`;
+//             let oModel: object;
+//             oModel = new GraphQLModel();
+//
+//             this.getView().setModel(oModel)
+//
+//             // @ts-ignore
+//             oModel.query("http://localhost:4000/graphql", request).then((data) => {
+//                 console.log("zzzz", data);
+//             });
         },
 
         handleNewItemPress(): void {
@@ -45,6 +55,19 @@ sap.ui.define([
             // ToDo: Make a copy of the data
             // ToDo: enter edit mode
         },
+
+        // _getFormFragment: function (sFragmentName) {
+        //     var oFormFragment = this._formFragments[sFragmentName];
+        //
+        //     if (oFormFragment) {
+        //         return oFormFragment;
+        //     }
+        //
+        //     oFormFragment = sap.ui.xmlfragment(this.getView().getId(), "sap.ui.layout.sample.SimpleForm354." + sFragmentName);
+        //
+        //     this._formFragments[sFragmentName] = oFormFragment;
+        //     return this._formFragments[sFragmentName];
+        // },
 
         handleItemCancel(): void {
             // ToDo: Restore data

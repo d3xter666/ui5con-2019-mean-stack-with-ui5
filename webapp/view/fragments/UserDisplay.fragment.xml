@@ -1,0 +1,53 @@
+<core:FragmentDefinition
+		xmlns="sap.m"
+		xmlns:core="sap.ui.core"
+		xmlns:f="sap.f"
+		xmlns:form="sap.ui.layout.form">
+
+	<form:SimpleForm
+			editable="false"
+			layout="ResponsiveGridLayout">
+		<form:content>
+			<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
+
+			<Label text="{i18n>userInfoTitle}"/>
+			<Text text="{title}"/>
+
+			<Label text="{i18n>userInfoFirstName}"/>
+			<Text text="{first_name}"/>
+
+			<Label text="{i18n>userInfoLastName}"/>
+			<Text text="{last_name}"/>
+
+			<Label text="{i18n>userInfoEmail}"/>
+			<Text text="{email}"/>
+
+			<Label text="{i18n>userInfoJobTitle}"/>
+			<Text text="{job_title}"/>
+
+			<Label text="{i18n>userInfoCompany}"/>
+			<Text text="{company}"/>
+
+			<Label text="{i18n>userInfoDepartment}"/>
+			<Text text="{department}"/>
+
+			<Label text="{i18n>userInfoSpokenLanguages}"/>
+			<Text text="{languages}"/>
+
+			<Label text="{i18n>userInfoUniversity}"/>
+			<Text text="{university}"/>
+
+			<Label text="{i18n>userInfoSkills}"/>
+			<Text text="{skills}"/>
+
+			<Label text="{i18n>userInfoSelfDescription}"/>
+			<Text text="{self_decription}"/>
+		</form:content>
+	</form:SimpleForm>
+
+	<OverflowToolbar design="Solid" class="sapContrast">
+		<ToolbarSpacer/>
+		<Button icon="sap-icon://edit" type="Transparent" press="handleItemEdit"/>
+		<Button icon="sap-icon://delete" type="Transparent" press="handleItemDelete"/>
+	</OverflowToolbar>
+</core:FragmentDefinition>
