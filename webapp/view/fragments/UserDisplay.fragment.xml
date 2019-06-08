@@ -4,6 +4,8 @@
 		xmlns:f="sap.f"
 		xmlns:form="sap.ui.layout.form">
 
+	<core:InvisibleText text="{id}"/>
+
 	<form:SimpleForm
 			editable="false"
 			layout="ResponsiveGridLayout">
@@ -47,7 +49,7 @@
 
 	<OverflowToolbar design="Solid" class="sapContrast">
 		<ToolbarSpacer/>
-		<Button icon="sap-icon://edit" type="Transparent" press="handleItemEdit"/>
-		<Button icon="sap-icon://delete" type="Transparent" press="handleItemDelete"/>
+		<Button icon="sap-icon://edit" type="Transparent" press="handleEditRecord"/>
+		<Button icon="sap-icon://delete" type="Transparent" press="handleDeleteRecord"/>
 	</OverflowToolbar>
 </core:FragmentDefinition>

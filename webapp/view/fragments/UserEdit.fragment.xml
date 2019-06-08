@@ -2,15 +2,16 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core"
 		xmlns:f="sap.f"
-		xmlns:form="sap.ui.layout.form"
-		xmlns:card="sap.f.cards">
+		xmlns:form="sap.ui.layout.form">
+
+	<core:InvisibleText text="{id}" />
 
 	<form:SimpleForm
 			editable="true"
 			layout="ResponsiveGridLayout">
 		<form:content>
 			<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
-			
+
 			<Label text="{i18n>userInfoTitle}"/>
 			<ComboBox width="100%"
 					  selectedKey="{title}"
@@ -92,7 +93,7 @@
 
 	<OverflowToolbar design="Solid" class="sapContrast">
 		<ToolbarSpacer/>
-		<Button icon="sap-icon://decline" type="Transparent" press="handleItemCancel"/>
-		<Button icon="sap-icon://save" type="Transparent" press="handleItemSave"/>
+		<Button icon="sap-icon://decline" type="Transparent" press="handleCancelEdit"/>
+		<Button icon="sap-icon://save" type="Transparent" press="handleSaveRecord"/>
 	</OverflowToolbar>
 </core:FragmentDefinition>

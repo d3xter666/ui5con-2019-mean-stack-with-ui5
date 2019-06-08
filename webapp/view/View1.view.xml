@@ -61,10 +61,6 @@
 						</grid:GridResponsiveLayout>
 					</grid:customLayout>
 				</grid:CSSGrid>
-
-
-				<Input value="{zzz>/value}" change="onChange"/>
-				<Text text="{zzz>/value}"/>
 			</content>
 		</Page>
 	</App>

@@ -9,8 +9,7 @@
 		</f:header>
 		<f:content>
 			<VBox>
-				<core:Fragment fragmentName="ui5con2019.view.fragments.UserDisplay" type="XML" visible="{= ${meta/editable} !== true}" />
-				<core:Fragment fragmentName="ui5con2019.view.fragments.UserEdit" type="XML" visible="{= ${meta/editable} === true}" />
+				<core:Fragment fragmentName="ui5con2019.view.fragments.UserDisplay" type="XML" />
 			</VBox>
 		</f:content>
 	</f:Card>

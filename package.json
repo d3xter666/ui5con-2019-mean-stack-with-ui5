@@ -36,6 +36,7 @@
 	"scripts": {
 		"backend:run_prod": "babel-node ./backend/index.js",
 		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
+		"frontend:serve": "http-server -c -1 --cors ./webapp",
 		"frontend:ts_watch": "grunt ts:dev",
 		"frontend:ts_compile": "grunt ts:default",
 		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
