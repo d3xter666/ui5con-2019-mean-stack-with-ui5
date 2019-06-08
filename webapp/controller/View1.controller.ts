@@ -30,25 +30,11 @@ sap.ui.define([
         _dataCache: {},
 
         onInit(): void {
-            this._loadAddNewItem();
+            this.loadRecords();
         },
 
-        _loadAddNewItem(): void {
-
-//             const request = `{
-//     record(id: 5){
-//       id, first_name, last_name, email
-//     }
-// }`;
-//             let oModel: object;
-//             oModel = new GraphQLModel();
-//
-//             this.getView().setModel(oModel)
-//
-//             // @ts-ignore
-//             oModel.query("http://localhost:4000/graphql", request).then((data) => {
-//                 console.log("zzzz", data);
-//             });
+        handleFilterPress(): void {
+            this.loadRecords();
         },
 
         handleNewItemPress(): void {
@@ -164,6 +150,20 @@ sap.ui.define([
             const record: IRecord = data.filter((curRecord: IRecord) => curRecord.id === recordId)[0];
 
             return record || null;
+        },
+
+        loadRecords(): void {
+            const page: sap.m.Page = this.getView().byId("hrSystemPage");
+            // @ts-ignore
+            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
+            const {visibleFields} = JSON.parse(config.getJSON());
+            const fieldsToRequest: string[] = ["id", "avatar"].concat(visibleFields);
+            const request = `{ records{ ${fieldsToRequest} } }`;
+
+            page.setBusy(true);
+
+            model.query("http://localhost:4000/graphql", request).then(() => page.setBusy(false));
         },
 
         _persistData(data: object, action?: string): void {

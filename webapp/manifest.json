@@ -12,12 +12,6 @@
 		"sourceTemplate": {
 			"id": "ui5template.basicSAPUI5ApplicationProject",
 			"version": "1.40.12"
-		},
-		"dataSources": {
-		  "backendAPI": {
-			"uri": "/api/v2/zzz",
-			"type": "JSON"
-		  }
 		}
 	},
 
@@ -60,9 +54,7 @@
 		},
 		"models": {
 			"": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/data/mock-data.json",
-				"preload": true
+				"type": "ui5con.model.graphql.GraphQLModel"
 			},
 			"userMeta": {
 				"type": "sap.ui.model.json.JSONModel",

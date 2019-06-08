@@ -1,7 +1,7 @@
-sap.ui.define(["sap/ui/model/Model"], (Model) => {
+sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
     "use strict";
 
-    const GraphQLModel = Model.extend("ui5con.model.graphql.GraphQLModel", {});
+    const GraphQLModel = JSONModel.extend("ui5con.model.graphql.GraphQLModel", {});
 
     GraphQLModel.prototype.query = function(url: string, query: string): Promise<any> {
         return fetch(url, {
@@ -13,33 +13,20 @@ sap.ui.define(["sap/ui/model/Model"], (Model) => {
             },
             body: JSON.stringify({query}),
         })
-            .then((data: any) => {
-                this.oData = data;
-
-                this.fireRequestCompleted();
-
-                return data;
-            }, (err) => {
+            .then((response: Response) => response.json(), (err: any) => {
                 this.fireRequestFailed(err);
 
                 throw new Error(err);
+            })
+            .then((response: any) => {
+                const data = response.data;
+
+                this.setData(data);
+                this.fireRequestCompleted();
+
+                return data;
             });
     };
-
-    GraphQLModel.prototype.getData = function(): any {
-        return this.oData;
-    };
-
-    // @ts-ignore
-    GraphQLModel.prototype.setData = function(data: any): ui5con.model.graphql.GraphQLModel {
-        this.oData = data;
-
-        return this;
-    };
-
-    // tslint:disable-next-line:no-unused-expression
-    new GraphQLModel();
-
 
     return GraphQLModel;
 });

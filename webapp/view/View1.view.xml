@@ -6,7 +6,7 @@
 		xmlns:grid="sap.ui.layout.cssgrid"
 		xmlns:core="sap.ui.core">
 	<App>
-		<Page title="{i18n>appTitle}" class="sapUiContentPadding">
+		<Page title="{i18n>appTitle}" class="sapUiContentPadding" id="hrSystemPage" busy="true">
 			<subHeader>
 				<Toolbar>
 					<Button text="{i18n>userInfoNewUser}" press="handleNewItemPress" />
@@ -23,14 +23,14 @@
 						<core:Item key="{config>field}" text="{config>fieldName}"/>
 					</MultiComboBox>
 
-					<Button text="{i18n>goBtn}" type="Emphasized"/>
+					<Button text="{i18n>goBtn}" type="Emphasized" press="handleFilterPress" />
 				</Toolbar>
 			</subHeader>
 			<content>
 				<grid:CSSGrid
 						id="gridLayout"
 						items="{
-							path: '/'
+							path: '/records'
 						}">
 
 					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
