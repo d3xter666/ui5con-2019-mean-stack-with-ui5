@@ -19,7 +19,7 @@
 									path: 'userMeta>/titles',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>title}" text="{userMeta>title}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</ComboBox>
 
 			<Label text="{i18n>userInfoFirstName}"/>
@@ -38,7 +38,7 @@
 									path: 'userMeta>/job_titles',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>job_title}" text="{userMeta>job_title}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</ComboBox>
 
 			<Label text="{i18n>userInfoCompany}"/>
@@ -48,7 +48,7 @@
 									path: 'userMeta>/companies',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>company}" text="{userMeta>company}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</ComboBox>
 
 			<Label text="{i18n>userInfoDepartment}"/>
@@ -58,7 +58,7 @@
 									path: 'userMeta>/departments',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>department}" text="{userMeta>department}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</ComboBox>
 
 			<Label text="{i18n>userInfoSpokenLanguages}"/>
@@ -68,7 +68,7 @@
 									path: 'userMeta>/languages',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>lang}" text="{userMeta>lang}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</MultiComboBox>
 
 			<Label text="{i18n>userInfoUniversity}"/>
@@ -82,7 +82,7 @@
 									path: 'userMeta>/skills',
 									templateShareable: false
 								}">
-				<core:Item key="{userMeta>skill}" text="{userMeta>skill}"/>
+				<core:Item key="{userMeta>text}" text="{userMeta>text}"/>
 			</MultiComboBox>
 
 
