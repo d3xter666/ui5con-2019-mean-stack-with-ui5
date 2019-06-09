@@ -40,7 +40,7 @@ sap.ui.define([
         handleNewItemPress(): void {
             const container: sap.m.VBox = this.getView().byId("gridLayout").getItems()[0].getContent();
             const data: IRecord[] = this._getRecords();
-            const newRecord: IRecord = {id: this._generateId(data)};
+            const newRecord: IRecord = {id: this._generateId(data), avatar: "./assets/images/user.svg"};
 
             data.unshift(newRecord);
             this._updateRecords(data);
