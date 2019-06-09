@@ -1,12 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
-    "ui5con/model/graphql/GraphQLModel",
+    "ui5con2019/libs/ui5con/model/graphql/GraphQLModel",
 ], (
     Controller: sap.ui.core.mvc.Controller,
     Fragment: sap.ui.core.Fragment,
     // @ts-ignore
-    GraphQLModel: ui5con.model.graphql.GraphQLModel) => {
+    GraphQLModel: ui5con2019.libs.ui5con.model.graphql.GraphQLModel) => {
 
     interface IRecord {
         id: number;
@@ -141,7 +141,7 @@ sap.ui.define([
 
         _getRecords(): IRecord[] {
             // @ts-ignore
-            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
             const data: IRecord[] = JSON.parse(model.getJSON()).records;
 
             return data;
@@ -150,7 +150,7 @@ sap.ui.define([
         // @ts-ignore
         _updateRecords(data: IRecord[]): ui5con2019.controller.BaseController {
             // @ts-ignore
-            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
             model.setData({records: data});
 
             return this;
@@ -159,7 +159,7 @@ sap.ui.define([
         _loadRecords(): void {
             const page: sap.m.Page = this.getView().byId("hrSystemPage");
             // @ts-ignore
-            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
             const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
             const {visibleFields} = JSON.parse(config.getJSON());
             const fieldsToRequest: string[] = ["id", "avatar"].concat(visibleFields);
@@ -167,7 +167,7 @@ sap.ui.define([
 
             page.setBusy(true);
 
-            model.query("http://localhost:4000/graphql", request).then(() => page.setBusy(false));
+            model.query("/graphql", request).then(() => page.setBusy(false));
         },
 
         _resolveEvent(event: sap.ui.base.Event): object {
@@ -180,7 +180,7 @@ sap.ui.define([
 
         _persistData(data: IRecord, action?: string): void {
             // @ts-ignore
-            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
             const fields = Object.keys(data);
             const stringifiedData = fields
                 .map((fieldName) => fieldName + ": " + JSON.stringify(data[fieldName])).join(", ");
@@ -200,7 +200,7 @@ sap.ui.define([
 
             const query = `mutation { ${mutation}(${stringifiedData}) { ${fields} } }`;
 
-            model.query("http://localhost:4000/graphql", query, false);
+            model.query("/graphql", query, false);
         },
     });
 });

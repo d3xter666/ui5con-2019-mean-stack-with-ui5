@@ -1,7 +1,7 @@
 sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
     "use strict";
 
-    const GraphQLModel = JSONModel.extend("ui5con.model.graphql.GraphQLModel", {});
+    const GraphQLModel = JSONModel.extend("ui5con2019.libs.ui5con.model.graphql.GraphQLModel", {});
 
     GraphQLModel.prototype.query = function(url: string, query: string, updateModel: boolean = true): Promise<any> {
         return fetch(url, {

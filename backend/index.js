@@ -7,7 +7,7 @@ import schema from "./graphql/";
 import dataImporter from "./mock-data/import-data";
 
 const app = express();
-const PORT = process.env.PORT || "4000";
+const PORT = process.env.PORT || "8080";
 const db = "mongodb://localhost:27017/local";
 
 // Connect to MongoDB with Mongoose.
@@ -32,5 +32,13 @@ app.use(
 		graphiql: true
 	})
 );
+
+//Serve static assets from the webapp folder
+app.use(express.static('./webapp', {
+	setHeaders: (res) => {
+		res.setHeader("Cache-Control", "public, max-age=2592000");
+		res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());
+	}
+}));
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

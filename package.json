@@ -23,7 +23,7 @@
 		"@babel/node": "^7.2.2",
 		"@babel/preset-env": "^7.4.4",
 		"@openui5/ts-types": "^1.65.1",
-		"@ui5/cli": "^1.3.0",
+		"@ui5/cli": "^1.5.0",
 		"grunt": "^1.0.4",
 		"grunt-ts": "^6.0.0-beta.22",
 		"http-server": "^0.11.1",
@@ -34,6 +34,7 @@
 		"typescript": "^3.4.5"
 	},
 	"scripts": {
+		"start": "npm run frontend:build && npm run backend:run_prod",
 		"backend:run_prod": "babel-node ./backend/index.js",
 		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
 		"frontend:serve": "http-server -c -1 --cors ./webapp",
@@ -41,7 +42,6 @@
 		"frontend:ts_compile": "grunt ts:default",
 		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
 		"frontend:ui5_build": "ui5 build",
-		"frontend:build": "npm run frontend:test && npm run frontend:ts_compile && npm run frontend:ui5_build",
-		"frontend:test": "grunt unit_and_integration_tests && npm run frontend:tslint"
+		"frontend:build": "npm run frontend:tslint && npm run frontend:ts_compile && npm run frontend:ui5_build"
 	}
 }
