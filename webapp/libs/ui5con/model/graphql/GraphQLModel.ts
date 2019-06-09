@@ -3,7 +3,7 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
 
     const GraphQLModel = JSONModel.extend("ui5con.model.graphql.GraphQLModel", {});
 
-    GraphQLModel.prototype.query = function(url: string, query: string): Promise<any> {
+    GraphQLModel.prototype.query = function(url: string, query: string, updateModel: boolean = true): Promise<any> {
         return fetch(url, {
             method: "POST",
             mode: "cors",
@@ -21,7 +21,9 @@ sap.ui.define(["sap/ui/model/json/JSONModel"], (JSONModel) => {
             .then((response: any) => {
                 const data = response.data;
 
-                this.setData(data);
+                if (updateModel) {
+                    this.setData(data);
+                }
                 this.fireRequestCompleted();
 
                 return data;

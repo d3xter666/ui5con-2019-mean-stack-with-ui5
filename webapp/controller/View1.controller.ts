@@ -30,31 +30,28 @@ sap.ui.define([
         _dataCache: {},
 
         onInit(): void {
-            this.loadRecords();
+            this._loadRecords();
         },
 
         handleFilterPress(): void {
-            this.loadRecords();
+            this._loadRecords();
         },
 
         handleNewItemPress(): void {
-            let data: object[];
-            const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
-
-            data = JSON.parse(oModel.getJSON());
-
-            const newRecord: IRecord = {id: this._generateId(data)};
-            data.unshift(newRecord);
-            oModel.setData(data);
-
             const container: sap.m.VBox = this.getView().byId("gridLayout").getItems()[0].getContent();
+            const data: IRecord[] = this._getRecords();
+            const newRecord: IRecord = {id: this._generateId(data)};
+
+            data.unshift(newRecord);
+            this._updateRecords(data);
+            this._dataCache[newRecord.id] = JSON.parse(JSON.stringify(newRecord));
+
+            this._persistData(newRecord, "A");
             this._replaceFragment(container, "UserEdit");
         },
 
         handleEditRecord(event: sap.ui.base.Event): void {
-            const sourceCtrl: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
-            const container: sap.m.VBox = sourceCtrl.getParent().getParent() as sap.m.VBox;
-            const recordId: number = this._extractId(container);
+            const {container, recordId} = this._resolveEvent(event);
             const data: IRecord = this._extractData(recordId);
 
             // Copy object the ES5 way
@@ -64,47 +61,38 @@ sap.ui.define([
         },
 
         handleCancelEdit(event: sap.ui.base.Event): void {
-            const sourceCtrl: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
-            const container: sap.m.VBox = sourceCtrl.getParent().getParent() as sap.m.VBox;
-            const recordId: number = this._extractId(container);
+            const {container, recordId} = this._resolveEvent(event);
+            const data: IRecord[] = this._getRecords();
             const recordToRestore: IRecord = this._dataCache[recordId];
-            const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
-            const data: IRecord[] = JSON.parse(oModel.getJSON());
             const indexToReplace = data.map((r: IRecord) => r.id).indexOf(recordId);
 
             if (indexToReplace > -1 && recordToRestore) {
                 data.splice(indexToReplace, 1, recordToRestore);
-                oModel.setData(data);
+                this._updateRecords(data);
             }
 
             this._replaceFragment(container, "UserDisplay");
         },
 
         handleSaveRecord(event: sap.ui.base.Event): void {
-            const sourceCtrl: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
-            const container: sap.m.VBox = sourceCtrl.getParent().getParent() as sap.m.VBox;
-            const recordId: number = this._extractId(container);
+            const {container, recordId} = this._resolveEvent(event);
             const data: IRecord = this._extractData(recordId);
 
-            this._persistData(data);
-
+            this._persistData(data, "U");
             this._replaceFragment(container, "UserDisplay");
         },
 
         handleDeleteRecord(event: sap.ui.base.Event): void {
-            const sourceCtrl: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
-            const container: sap.m.VBox = sourceCtrl.getParent().getParent() as sap.m.VBox;
-            const recordId: number = this._extractId(container);
-            const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
-            const data: IRecord[] = JSON.parse(oModel.getJSON());
+            const {recordId} = this._resolveEvent(event);
+            const data: IRecord[] = this._getRecords();
             const indexToReplace = data.map((r: IRecord) => r.id).indexOf(recordId);
 
             if (indexToReplace > -1) {
-                data.splice(indexToReplace, 1);
-                oModel.setData(data);
+                // @ts-ignore
+                const removedRecord: IRecord = data.splice(indexToReplace, 1);
+                this._updateRecords(data);
+                this._persistData(removedRecord, "D");
             }
-
-            this._persistData(data, "D");
         },
 
         _replaceFragment(source: sap.m.VBox, fragmentName: string): void {
@@ -132,7 +120,7 @@ sap.ui.define([
         },
 
         _extractId(container: sap.m.VBox): number {
-            let id = -1;
+            let id: number = -1;
             const hiddenEl: sap.ui.core.Control = container.getItems()[0];
             let invisibleText: sap.ui.core.InvisibleText;
 
@@ -145,14 +133,30 @@ sap.ui.define([
         },
 
         _extractData(recordId: number): IRecord {
-            const oModel: sap.ui.model.json.JSONModel = this.getView().getModel();
-            const data = JSON.parse(oModel.getJSON());
+            const data: IRecord[] = this._getRecords();
             const record: IRecord = data.filter((curRecord: IRecord) => curRecord.id === recordId)[0];
 
             return record || null;
         },
 
-        loadRecords(): void {
+        _getRecords(): IRecord[] {
+            // @ts-ignore
+            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const data: IRecord[] = JSON.parse(model.getJSON()).records;
+
+            return data;
+        },
+
+        // @ts-ignore
+        _updateRecords(data: IRecord[]): ui5con2019.controller.BaseController {
+            // @ts-ignore
+            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            model.setData({records: data});
+
+            return this;
+        },
+
+        _loadRecords(): void {
             const page: sap.m.Page = this.getView().byId("hrSystemPage");
             // @ts-ignore
             const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
@@ -166,8 +170,37 @@ sap.ui.define([
             model.query("http://localhost:4000/graphql", request).then(() => page.setBusy(false));
         },
 
-        _persistData(data: object, action?: string): void {
-            // TODO: Do a GRAPHQL request
+        _resolveEvent(event: sap.ui.base.Event): object {
+            const sourceCtrl: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
+            const container: sap.m.VBox = sourceCtrl.getParent().getParent() as sap.m.VBox;
+            const recordId: number = this._extractId(container);
+
+            return {container, recordId};
+        },
+
+        _persistData(data: IRecord, action?: string): void {
+            // @ts-ignore
+            const model: ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const fields = Object.keys(data);
+            const stringifiedData = fields
+                .map((fieldName) => fieldName + ": " + JSON.stringify(data[fieldName])).join(", ");
+
+            let mutation;
+            switch (action) {
+                case "D":
+                    mutation = "deleteRecord";
+                    break;
+                case "U":
+                    mutation = "editRecord";
+                    break;
+                default:
+                    mutation = "addRecord";
+                    break;
+            }
+
+            const query = `mutation { ${mutation}(${stringifiedData}) { ${fields} } }`;
+
+            model.query("http://localhost:4000/graphql", query, false);
         },
     });
 });

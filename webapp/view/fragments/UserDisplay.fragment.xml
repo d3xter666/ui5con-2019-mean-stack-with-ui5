@@ -12,37 +12,37 @@
 		<form:content>
 			<f:Avatar src="{avatar}" displaySize="S" displayShape="Square"/>
 
-			<Label text="{i18n>userInfoTitle}"/>
+			<Label text="{i18n>userInfoTitle}" visible="{= !!${title} }" />
 			<Text text="{title}"/>
 
-			<Label text="{i18n>userInfoFirstName}"/>
+			<Label text="{i18n>userInfoFirstName}" visible="{= !!${first_name} }" />
 			<Text text="{first_name}"/>
 
-			<Label text="{i18n>userInfoLastName}"/>
+			<Label text="{i18n>userInfoLastName}" visible="{= !!${last_name} }"/>
 			<Text text="{last_name}"/>
 
-			<Label text="{i18n>userInfoEmail}"/>
+			<Label text="{i18n>userInfoEmail}" visible="{= !!${email} }"/>
 			<Text text="{email}"/>
 
-			<Label text="{i18n>userInfoJobTitle}"/>
+			<Label text="{i18n>userInfoJobTitle}" visible="{= !!${job_title} }"/>
 			<Text text="{job_title}"/>
 
-			<Label text="{i18n>userInfoCompany}"/>
+			<Label text="{i18n>userInfoCompany}" visible="{= !!${company} }"/>
 			<Text text="{company}"/>
 
-			<Label text="{i18n>userInfoDepartment}"/>
+			<Label text="{i18n>userInfoDepartment}" visible="{= !!${department} }"/>
 			<Text text="{department}"/>
 
-			<Label text="{i18n>userInfoSpokenLanguages}"/>
+			<Label text="{i18n>userInfoSpokenLanguages}" visible="{= !!${languages} }"/>
 			<Text text="{languages}"/>
 
-			<Label text="{i18n>userInfoUniversity}"/>
+			<Label text="{i18n>userInfoUniversity}" visible="{= !!${university} }"/>
 			<Text text="{university}"/>
 
-			<Label text="{i18n>userInfoSkills}"/>
+			<Label text="{i18n>userInfoSkills}" visible="{= !!${skills} }"/>
 			<Text text="{skills}"/>
 
-			<Label text="{i18n>userInfoSelfDescription}"/>
+			<Label text="{i18n>userInfoSelfDescription}" visible="{= !!${self_decription} }"/>
 			<Text text="{self_decription}"/>
 		</form:content>
 	</form:SimpleForm>

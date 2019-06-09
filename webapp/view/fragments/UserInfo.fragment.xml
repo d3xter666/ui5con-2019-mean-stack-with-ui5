@@ -5,7 +5,7 @@
 		xmlns:card="sap.f.cards">
 	<f:Card>
 		<f:header>
-			<card:Header title="{= ${title} + ' ' + ${first_name} + ' ' + ${last_name} }" subtitle="{company}"/>
+			<card:Header title="{= (${title} || '') + ' ' + (${first_name} || '') + ' ' + (${last_name} || '') }" subtitle="{company}"/>
 		</f:header>
 		<f:content>
 			<VBox>
