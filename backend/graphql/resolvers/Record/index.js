@@ -12,7 +12,7 @@ export default {
 		},
 		records: () => {
 			return new Promise((resolve, reject) => {
-				Record.find({})
+				Record.find({}, null, {sort: {id: -1}})
 					.populate()
 					.exec((err, res) => {
 						err ? reject(err) : resolve(res);
