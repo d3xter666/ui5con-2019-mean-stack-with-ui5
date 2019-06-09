@@ -59,7 +59,7 @@
 			},
 			"userMeta": {
 				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/data/mock-user-meta.json",
+				"uri": "model/user-meta.json",
 				"preload": true
 			},
 			"config": {
