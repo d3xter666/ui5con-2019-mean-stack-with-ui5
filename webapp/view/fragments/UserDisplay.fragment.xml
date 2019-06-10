@@ -49,7 +49,7 @@
 
 	<OverflowToolbar design="Solid" class="sapContrast">
 		<ToolbarSpacer/>
-		<Button icon="sap-icon://edit" type="Transparent" press="handleEditRecord"/>
-		<Button icon="sap-icon://delete" type="Transparent" press="handleDeleteRecord"/>
+		<Button text="{i18n>userInfoEdit}" type="Transparent" press="handleEditRecord"/>
+		<Button text="{i18n>userInfoDelete}" type="Transparent" press="handleDeleteRecord"/>
 	</OverflowToolbar>
 </core:FragmentDefinition>

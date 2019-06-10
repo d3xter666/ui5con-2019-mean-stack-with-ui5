@@ -1,10 +1,16 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
     "sap/ui/core/Fragment",
+    "sap/m/Dialog",
+    "sap/m/Text",
+    "sap/m/Button",
     "ui5con2019/libs/ui5con/model/graphql/GraphQLModel",
 ], (
     Controller: sap.ui.core.mvc.Controller,
     Fragment: sap.ui.core.Fragment,
+    Dialog: sap.m.Dialog,
+    Text: sap.m.Text,
+    Button: sap.m.Button,
     // @ts-ignore
     GraphQLModel: ui5con2019.libs.ui5con.model.graphql.GraphQLModel) => {
 
@@ -26,7 +32,7 @@ sap.ui.define([
 
     // @ts-ignore
     return Controller.extend("ui5con2019.controller.BaseController", {
-        _fragmentsCache: [],
+        _dialog: null,
 
         onInit(): void {
             this._loadRecords();
@@ -72,6 +78,41 @@ sap.ui.define([
 
         handleDeleteRecord(event: sap.ui.base.Event): void {
             const {recordId} = this._resolveEvent(event);
+            const fnPress = () => {
+                this._deleteRecord(recordId);
+                fnClose();
+            };
+            const fnClose = () => {
+                this._dialog.getButtons()[0].detachPress(fnPress);
+                this._dialog.getButtons()[1].detachPress(fnClose);
+                this._dialog.close();
+            };
+
+            if (!this._dialog) {
+                // @ts-ignore
+                this._dialog = new Dialog({
+                    title: "{i18n>userInfoDeleteRecord}",
+                    type: "Message",
+                    // @ts-ignore
+                    content: [new Text({text: "{i18n>userInfoDeleteConfirmation}"})],
+                    buttons: [
+                        // @ts-ignore
+                        new Button({text: "{i18n>userInfoDelete}"}),
+                        // @ts-ignore
+                        new Button({text: "{i18n>userInfoCancel}"}),
+                    ],
+                });
+
+                const container: sap.ui.core.Control = event.getSource() as sap.ui.core.Control;
+                container.addDependent(this._dialog);
+            }
+
+            this._dialog.getButtons()[0].attachPress(fnPress);
+            this._dialog.getButtons()[1].attachPress(fnClose);
+            this._dialog.open();
+        },
+
+        _deleteRecord(recordId: number): void {
             const data: IRecord[] = this._getRecords();
             const indexToReplace = data.map((r: IRecord) => r.id).indexOf(recordId);
 

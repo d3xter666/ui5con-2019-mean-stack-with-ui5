@@ -93,7 +93,7 @@
 
 	<OverflowToolbar design="Solid" class="sapContrast">
 		<ToolbarSpacer/>
-		<Button icon="sap-icon://decline" type="Transparent" press="handleCancelEdit"/>
-		<Button icon="sap-icon://save" type="Transparent" press="handleSaveRecord"/>
+		<Button text="{i18n>userInfoCancel}" type="Transparent" press="handleCancelEdit"/>
+		<Button text="{i18n>userInfoSave}" type="Transparent" press="handleSaveRecord"/>
 	</OverflowToolbar>
 </core:FragmentDefinition>
