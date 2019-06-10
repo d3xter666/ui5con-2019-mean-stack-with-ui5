@@ -3,7 +3,7 @@
 		xmlns:mvc="sap.ui.core.mvc"
 		displayBlock="true"
 		xmlns="sap.m"
-		xmlns:grid="sap.ui.layout.cssgrid"
+		xmlns:f="sap.f"
 		xmlns:core="sap.ui.core">
 	<App>
 		<Page title="{i18n>appTitle}" class="sapUiContentPadding" id="hrSystemPage" busy="true">
@@ -27,40 +27,21 @@
 				</Toolbar>
 			</subHeader>
 			<content>
-				<grid:CSSGrid
+				<f:GridContainer
 						id="gridLayout"
 						items="{
 							path: '/records'
 						}">
 
-					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+					<f:layout>
+						<f:GridContainerSettings columnSize="23%" gap="1rem"/>
+					</f:layout>
+					<f:layoutS>
+						<f:GridContainerSettings columnSize="100%" gap="1rem"/>
+					</f:layoutS>
 
-					<grid:customLayout>
-						<grid:GridResponsiveLayout>
-							<grid:layoutS>
-								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 100%)"
-										gridRowGap="1rem"
-										gridColumnGap="1rem">
-								</grid:GridSettings>
-							</grid:layoutS>
-							<grid:layout>
-								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 31%)"
-										gridRowGap="1rem"
-										gridColumnGap="1rem">
-								</grid:GridSettings>
-							</grid:layout>
-							<grid:layoutXL>
-								<grid:GridSettings
-										gridTemplateColumns="repeat(auto-fit, 24%)"
-										gridRowGap="1rem"
-										gridColumnGap="1rem">
-								</grid:GridSettings>
-							</grid:layoutXL>
-						</grid:GridResponsiveLayout>
-					</grid:customLayout>
-				</grid:CSSGrid>
+					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+				</f:GridContainer>
 			</content>
 		</Page>
 	</App>
