@@ -6,18 +6,18 @@
 	"last_name",
 	"skills"
   ],
-  "availableFields": [
-	{"field": "title", "fieldName": "Title"},
-	{"field": "first_name", "fieldName": "First Name"},
-	{"field": "last_name", "fieldName": "Last Name"},
-	{"field": "job_title", "fieldName": "Job Title"},
-	{"field": "email", "fieldName": "Email"},
-	{"field": "company", "fieldName": "Company"},
-	{"field": "department", "fieldName": "Department"},
-	{"field": "languages", "fieldName": "Languages"},
-	{"field": "university", "fieldName": "University"},
-	{"field": "self_decription", "fieldName": "Self Description"},
-	{"field": "skills", "fieldName": "Skills"}
+  "selectableFields": [
+	{"field": "title", "fieldName": "userInfoTitle"},
+	{"field": "first_name", "fieldName": "userInfoFirstName"},
+	{"field": "last_name", "fieldName": "userInfoLastName"},
+	{"field": "job_title", "fieldName": "userInfoJobTitle"},
+	{"field": "email", "fieldName": "userInfoEmail"},
+	{"field": "company", "fieldName": "userInfoCompany"},
+	{"field": "department", "fieldName": "userInfoDepartment"},
+	{"field": "languages", "fieldName": "userInfoSpokenLanguages"},
+	{"field": "university", "fieldName": "userInfoUniversity"},
+	{"field": "self_decription", "fieldName": "userInfoSelfDescription"},
+	{"field": "skills", "fieldName": "userInfoSkills"}
   ]
 }
 

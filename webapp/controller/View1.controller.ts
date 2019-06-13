@@ -4,15 +4,12 @@ sap.ui.define([
     "sap/m/Dialog",
     "sap/m/Text",
     "sap/m/Button",
-    "ui5con2019/libs/ui5con/model/graphql/GraphQLModel",
 ], (
     Controller: sap.ui.core.mvc.Controller,
     Fragment: sap.ui.core.Fragment,
     Dialog: sap.m.Dialog,
     Text: sap.m.Text,
-    Button: sap.m.Button,
-    // @ts-ignore
-    GraphQLModel: ui5con2019.libs.ui5con.model.graphql.GraphQLModel) => {
+    Button: sap.m.Button) => {
 
     interface IRecord {
         id: number;
@@ -28,11 +25,18 @@ sap.ui.define([
         university?: string;
         self_decription?: string;
         skills?: string[];
+        orderedFields?: object;
     }
 
     // @ts-ignore
     return Controller.extend("ui5con2019.controller.BaseController", {
         _dialog: null,
+
+        i18nFormatter(label: string): string {
+            // @ts-ignore
+            const resourceBundle: sap.base.i18n.ResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+            return resourceBundle.getText(label);
+        },
 
         onInit(): void {
             this._loadRecords();
@@ -185,6 +189,33 @@ sap.ui.define([
             return this;
         },
 
+        _extendRecord(record: IRecord): IRecord {
+            const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
+            const {selectableFields} = JSON.parse(config.getJSON());
+
+            // @ts-ignore
+            const fields = selectableFields.filter((field: object) => record[field.field] !== undefined)
+                .map((field: object) => {
+                    // @ts-ignore
+                    return {...field, value: record[field.field]};
+                });
+
+            return {
+                ...record,
+                orderedFields: fields,
+            };
+        },
+
+        _updateVisibleFields(response: any): void {
+            // @ts-ignore
+            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            let records: IRecord[] = response.records;
+
+            records = records.map((record: IRecord) => this._extendRecord(record));
+
+            model.setData({records});
+        },
+
         _loadRecord(recordId: number, fieldsToRequest: string[]): Promise<IRecord> {
             // @ts-ignore
             const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
@@ -194,7 +225,7 @@ sap.ui.define([
 
             return model.query("/graphql", request, false)
                 .then((response: any) => {
-                    const record: IRecord = response.record;
+                    const record: IRecord = this._extendRecord(response.record);
                     this._replaceRecordInModel(record);
 
                     return record;
@@ -210,7 +241,11 @@ sap.ui.define([
 
             page.setBusy(true);
 
-            model.query("/graphql", request).then(() => page.setBusy(false));
+            model.query("/graphql", request, false)
+                .then((response: any) => {
+                    this._updateVisibleFields(response);
+                    page.setBusy(false);
+                });
         },
 
         _getVisibleFields(): string[] {
@@ -244,7 +279,7 @@ sap.ui.define([
         _persistData(data: IRecord, action?: string): Promise<IRecord> {
             // @ts-ignore
             const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
-            let fields: string[] = Object.keys(data);
+            let fields: string[] = Object.keys(data).filter((key: string) => key !== "orderedFields");
 
             let mutation;
             switch (action) {
@@ -265,7 +300,7 @@ sap.ui.define([
             const query = `mutation { ${mutation}(${stringifiedData}) { ${this._getVisibleFields()} } }`;
 
             return model.query("/graphql", query, false).then((response: any) => {
-                const record: IRecord = response[mutation];
+                const record: IRecord = this._extendRecord(response[mutation]);
                 this._replaceRecordInModel(record);
 
                 return record;

@@ -13,10 +13,10 @@
 					<MultiComboBox width="15rem"
 								   selectedKeys="{config>/visibleFields}"
 								   items="{
-										path: 'config>/availableFields',
+										path: 'config>/selectableFields',
 										templateShareable: false
 									}">
-						<core:Item key="{config>field}" text="{config>fieldName}"/>
+						<core:Item key="{config>field}" text="{ path: 'config>fieldName', formatter: '.i18nFormatter' }"/>
 					</MultiComboBox>
 
 					<Button text="{i18n>goBtn}" type="Emphasized" press="handleFilterPress"/>
