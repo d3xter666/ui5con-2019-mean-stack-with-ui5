@@ -2,7 +2,7 @@ const FILES_TO_CACHE = [
 	"./index.html"
   ],
   CACHE_NAME = "static-cache" + new Date().getTime();
-  CACHE_CONTAINING_ERROR_MESSAGES = "offline-static-cache"
+  CACHE_CONTAINING_ERROR_MESSAGES = "offline-static-cache";
 
 self.addEventListener('install', function(event) {
 	event.waitUntil(

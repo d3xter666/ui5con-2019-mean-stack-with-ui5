@@ -3,7 +3,7 @@
 	"short_name": "UI5Con2019MEANApp",
 	"icons": [
 		{
-			"src": "./SAP_logo.png",
+			"src": "../assets/images/SAP_logo.png",
 			"type": "image/png",
 			"sizes": "192x192"
 		}],

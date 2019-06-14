@@ -5,7 +5,6 @@ window.addEventListener('beforeinstallprompt', saveBeforeInstallPromptEvent);
 window.addEventListener('appinstalled', logAppInstalled);
 
 
-
 function saveBeforeInstallPromptEvent(evt) {
 	var deferredInstallPrompt = evt,
 		installButton = document.getElementById("installer").getElementsByClassName("button")[0];
@@ -15,7 +14,6 @@ function saveBeforeInstallPromptEvent(evt) {
 	// Add code to save event & show the install button.
 
 	installButton.removeAttribute('hidden');
-
 }
 
 function installButtonClicked(deferredInstallPrompt, evt) {

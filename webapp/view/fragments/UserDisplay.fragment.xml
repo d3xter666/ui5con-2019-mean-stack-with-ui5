@@ -2,7 +2,6 @@
 		xmlns="sap.m"
 		xmlns:core="sap.ui.core"
 		xmlns:f="sap.f"
-		xmlns:l="sap.ui.layout"
 		xmlns:form="sap.ui.layout.form"
 >
 
@@ -12,7 +11,8 @@
 
 	<form:SimpleForm
 			editable="false"
-			content="{orderedFields}">
+			layout="ResponsiveGridLayout"
+			content="{path: 'orderedFields', templateShareable: false}">
 		<form:content>
 			<VBox>
 				<Label text="{path: 'fieldName', formatter: '.i18nFormatter'}"/>

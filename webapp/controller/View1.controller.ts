@@ -32,14 +32,14 @@ sap.ui.define([
     return Controller.extend("ui5con2019.controller.BaseController", {
         _dialog: null,
 
+        onInit(): void {
+            this._loadRecords();
+        },
+
         i18nFormatter(label: string): string {
             // @ts-ignore
             const resourceBundle: sap.base.i18n.ResourceBundle = this.getView().getModel("i18n").getResourceBundle();
             return resourceBundle.getText(label);
-        },
-
-        onInit(): void {
-            this._loadRecords();
         },
 
         handleFilterPress(): void {
@@ -129,7 +129,7 @@ sap.ui.define([
         },
 
         _replaceFragment(source: sap.m.VBox, fragmentName: string): void {
-            source.removeAllItems();
+            source.destroyItems();
 
             // @ts-ignore
             return Fragment.load({
@@ -168,6 +168,18 @@ sap.ui.define([
         _extractData(recordId: number): IRecord {
             const data: IRecord[] = this._getRecords();
             const record: IRecord = data.filter((curRecord: IRecord) => curRecord.id === recordId)[0];
+            const avatarMap: object = {
+                Mr: "user.svg",
+                Mrs: "avatar.svg",
+                Dr: "graduation.svg",
+                Ms: "woman.svg",
+                Honorable: "manager.svg",
+                Rev: "manager_1.svg",
+            };
+
+            if (record && record.title && avatarMap[record.title]) {
+                record.avatar = "./assets/images/" + avatarMap[record.title];
+            }
 
             return record || null;
         },
@@ -206,7 +218,7 @@ sap.ui.define([
             };
         },
 
-        _updateVisibleFields(response: any): void {
+        _extendVisibleFields(response: any): void {
             // @ts-ignore
             const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
             let records: IRecord[] = response.records;
@@ -220,7 +232,7 @@ sap.ui.define([
             // @ts-ignore
             const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
 
-            fieldsToRequest = fieldsToRequest || this._getVisibleFields();
+            fieldsToRequest = fieldsToRequest || this._getFieldsToRequest();
             const request = `{ record (id: ${recordId}) { ${fieldsToRequest} } }`;
 
             return model.query("/graphql", request, false)
@@ -236,19 +248,19 @@ sap.ui.define([
             const page: sap.m.Page = this.getView().byId("hrSystemPage");
             // @ts-ignore
             const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
-            const fieldsToRequest: string[] = this._getVisibleFields();
+            const fieldsToRequest: string[] = this._getFieldsToRequest();
             const request = `{ records{ ${fieldsToRequest} } }`;
 
             page.setBusy(true);
 
             model.query("/graphql", request, false)
                 .then((response: any) => {
-                    this._updateVisibleFields(response);
+                    this._extendVisibleFields(response);
                     page.setBusy(false);
                 });
         },
 
-        _getVisibleFields(): string[] {
+        _getFieldsToRequest(): string[] {
             const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
             const {visibleFields} = JSON.parse(config.getJSON());
             return ["id", "avatar"].concat(visibleFields);
@@ -297,7 +309,7 @@ sap.ui.define([
 
             const stringifiedData: string = fields
                 .map((fieldName) => fieldName + ": " + JSON.stringify(data[fieldName])).join(", ");
-            const query = `mutation { ${mutation}(${stringifiedData}) { ${this._getVisibleFields()} } }`;
+            const query = `mutation { ${mutation}(${stringifiedData}) { ${this._getFieldsToRequest()} } }`;
 
             return model.query("/graphql", query, false).then((response: any) => {
                 const record: IRecord = this._extendRecord(response[mutation]);

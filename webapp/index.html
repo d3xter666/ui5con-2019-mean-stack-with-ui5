@@ -1,17 +1,17 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="manifest" href="../offline/manifest.json">
-		<!-- App description -->
-		<meta name="description" content="UI5Con 2019 Demo Application">
-		<!-- App theme color -->
-		<meta name="theme-color" content="#2F3BA2" />
-		<title>UI5Con 2019: "MEAN Stack".replace("A", "UI5")</title>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="manifest" href="offline/manifest.json">
+	<!-- App description -->
+	<meta name="description" content="UI5Con 2019 Demo Application">
+	<!-- App theme color -->
+	<meta name="theme-color" content="#2F3BA2"/>
+	<title>UI5Con 2019: "MEAN Stack".replace("A", "UI5")</title>
 
-		<!--	SAPUI5 1.65. Important as should align with TS definitions	-->
-		<script id="sap-ui-bootstrap"
+	<!--	SAPUI5 1.65. Important as should align with TS definitions	-->
+	<script id="sap-ui-bootstrap"
 			src="https://sapui5.hana.ondemand.com/1.65.3/resources/sap-ui-core.js"
 			data-sap-ui-theme="sap_fiori_3"
 			data-sap-ui-resourceroots='{
@@ -21,24 +21,24 @@
 			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-async="true"
 			data-sap-ui-frameOptions="trusted">
-		</script>
-		<script>
-			// CODELAB: Register service worker.
-			if ('serviceWorker' in navigator) {
-			window.addEventListener('load', () => {
-				navigator.serviceWorker.register('./service-worker.js')
-					.then((reg) => {
-					console.log('Service worker registered.', reg);
-					});
-			});
-			}
-		</script>
-		<script src="../offline/install.js"></script>
-	</head>
-	<body class="sapUiBody">
-		<div data-sap-ui-component data-name="ui5con2019" data-id="container" data-settings='{"id" : "ui5con"}'></div>
-		<div id='installer'>
-			<button class='button'>Install</button>
-		</div>
-	</body>
+	</script>
+	<script>
+		// // CODELAB: Register service worker.
+		// if ('serviceWorker' in navigator) {
+		// 	window.addEventListener('load', () => {
+		// 		navigator.serviceWorker.register('./service-worker.js')
+		// 			.then((reg) => {
+		// 				console.log('Service worker registered.', reg);
+		// 			});
+		// 	});
+		// }
+	</script>
+	<script src="offline/install.js"></script>
+</head>
+<body class="sapUiBody">
+<div data-sap-ui-component data-name="ui5con2019" data-id="container" data-settings='{"id" : "ui5con"}'></div>
+<div id='installer'>
+	<button class='button'>Install</button>
+</div>
+</body>
 </html>
