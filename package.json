@@ -21,7 +21,11 @@
 		"graphql": "^14.3.0",
 		"graphql-tools": "^4.0.4",
 		"merge-graphql-schemas": "^1.5.8",
-		"mongoose": "^5.5.6"
+		"mongoose": "^5.5.6",
+		"@openui5/sap.m": "^1.65.4",
+		"@openui5/sap.ui.core": "^1.65.4",
+		"@openui5/sap.ui.layout": "^1.65.4",
+		"@openui5/sap.f": "^1.65.4"
 	},
 	"devDependencies": {
 		"@babel/cli": "^7.4.4",
@@ -45,7 +49,7 @@
 		"frontend:ts_watch": "grunt ts:dev",
 		"frontend:ts_compile": "grunt ts:default",
 		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
-		"frontend:ui5_build": "ui5 build",
+		"frontend:ui5_build": "ui5 build self-contained --all",
 		"frontend:build": "npm run frontend:tslint && npm run frontend:ts_compile && npm run frontend:ui5_build"
 	}
 }
