@@ -34,6 +34,7 @@ sap.ui.define([
 
         onInit(): void {
             this._loadRecords();
+            this._pwaInstall();
         },
 
         i18nFormatter(label: string): string {
@@ -256,8 +257,8 @@ sap.ui.define([
             model.query("/graphql", request, false)
                 .then((response: any) => {
                     this._extendVisibleFields(response);
-                    page.setBusy(false);
-                });
+                })
+                .finally(() => page.setBusy(false));
         },
 
         _getFieldsToRequest(): string[] {
@@ -317,6 +318,10 @@ sap.ui.define([
 
                 return record;
             });
+        },
+
+        _pwaInstall(): void {
+
         },
     });
 });
