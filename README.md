@@ -4,4 +4,24 @@ In the UI5 world there is a belief that IU5 is not to be used out of the SAP wor
 In our session we will show you how you can use UI5 “out of the box” and easily integrate our framework into any hype or stack.
 We’ll build a modern full stack App from scratch, using OpenUI5 as frontend layer.
 
-zzzzz
+## Run with Docker
+
+#### 1) Build and image
+```bash
+docker build -t ui5con/ui5-full-stack .
+```
+
+#### 2) Create a network
+```bash
+docker network create -d bridge --subnet=172.18.0.0/16 ui5con-network
+```
+
+#### 3) Create a mongo container
+```bash
+docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 172.18.0.22
+```
+
+#### 4) Run the image
+```bash
+docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.18.0.27 ui5con/ui5-full-stack
+```
