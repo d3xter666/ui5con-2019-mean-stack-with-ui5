@@ -34,7 +34,7 @@ sap.ui.define([
 
         onInit(): void {
             this._loadRecords();
-            this._pwaInstall();
+            this._pwaInstallListeners();
         },
 
         i18nFormatter(label: string): string {
@@ -320,8 +320,19 @@ sap.ui.define([
             });
         },
 
-        _pwaInstall(): void {
+        handleInstallButtonPress(): void {
+            if (this._installPrompt) {
+                this._installPrompt.prompt();
+            }
+        },
 
+        _pwaInstallListeners(): void {
+            window.addEventListener("beforeinstallprompt", (event: Event) => {
+                this._installPrompt = event;
+
+                const installButton: sap.m.Button = this.getView().byId("installBtn");
+                installButton.setVisible(true);
+            });
         },
     });
 });

@@ -13,15 +13,15 @@ docker build -t ui5con/ui5-full-stack .
 
 #### 2) Create a network
 ```bash
-docker network create -d bridge --subnet=172.18.0.0/16 ui5con-network
+docker network create -d bridge --subnet=172.20.0.0/16 ui5con-network
 ```
 
 #### 3) Create a mongo container
 ```bash
-docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 172.18.0.22
+docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 172.20.0.22 mongo:3.4
 ```
 
 #### 4) Run the image
 ```bash
-docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.18.0.27 ui5con/ui5-full-stack
+docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.20.0.27 ui5con/ui5-full-stack
 ```
