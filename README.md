@@ -19,13 +19,13 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 5. Integrate frontend with the backend
     - Create GraphQL library
     - Enable real CRUD
-6. Build a Progressive Web App with UI5
+6. Build a self containing app
+    - Change static server to serve content from the /dist folder
+    - Switch Service Worker caches to the /dist folder + Component-preload
+7. Build a Progressive Web App with UI5
     - manifest
     - Service Worker
     - Install button
-7. Build a self containing app
-    - Change static server to serve content from the /dist folder
-    - Switch Service Worker caches to the /dist folder + Component-preload
 8. (Bonus) Run with Docker
 
 ## Run with Docker

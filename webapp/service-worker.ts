@@ -1,7 +1,5 @@
 const FILES_TO_CACHE: string[] = [
-    // Local static resources
     "/",
-    // "/index.html",
     "./assets/images/avatar.svg",
     "./assets/images/graduation.svg",
     "./assets/images/logo.svg",
@@ -9,51 +7,40 @@ const FILES_TO_CACHE: string[] = [
     "./assets/images/manager_1.svg",
     "./assets/images/user.svg",
     "./assets/images/woman.svg",
+    "./assets/images/logo-big.png",
+    "./assets/images/logo-small.png",
     "./offline/ui5-pwa.js",
     "./offline/manifest.json",
     "./css/style.css",
     "./manifest.json",
 
-    // Local App: Production
-    // "./Component-preload.js",
-
-    // Local App: Development
     "./model/user-meta.json",
     "./model/config.json",
-    "./model/models.js",
     "./i18n/i18n.properties",
     "./i18n/i18n_en_US.properties",
-    "./Component.js",
-    "./libs/ui5con/model/graphql/GraphQLModel.js",
-    "./view/View1.view.xml",
-    "./controller/View1.controller.js",
-    "./view/fragments/UserInfo.fragment.xml",
-    "./view/fragments/UserDisplay.fragment.xml",
-    "./view/fragments/UserEdit.fragment.xml",
 
+    "./resources/sap-ui-version.json",
+    "./resources/sap-ui-custom.js",
+    "./resources/sap/ui/core/ComponentSupport.js",
 
-    // UI5 resources
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap-ui-core.js",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/library-preload.js",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/messagebundle_en_US.properties",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/sap_fiori_3/library.css",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap-ui-version.json",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Regular.woff2",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/layout/library-preload.js",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/m/library-preload.js",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/f/library-preload.js",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/layout/messagebundle_en_US.properties",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/f/messagebundle_en_US.properties",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/m/messagebundle_en_US.properties",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/layout/themes/sap_fiori_3/library.css",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/m/themes/sap_fiori_3/library.css",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/f/themes/sap_fiori_3/library.css",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/sap_fiori_3/library-parameters.json",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/layout/themes/sap_fiori_3/library-parameters.json",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/m/themes/sap_fiori_3/library-parameters.json",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/f/themes/sap_fiori_3/library-parameters.json",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/base/fonts/SAP-icons.woff2",
-    "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Bold.woff2",
+    "./resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Regular.woff2",
+    "./resources/sap/ui/core/themes/base/fonts/SAP-icons.woff2",
+    "./resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Bold.woff2",
+
+    "./resources/sap/ui/core/themes/sap_fiori_3/library.css",
+    "./resources/sap/ui/layout/themes/sap_fiori_3/library.css",
+    "./resources/sap/m/themes/sap_fiori_3/library.css",
+    "./resources/sap/f/themes/sap_fiori_3/library.css",
+
+    "./resources/sap/ui/core/themes/sap_fiori_3/library-parameters.json",
+    "./resources/sap/ui/layout/themes/sap_fiori_3/library-parameters.json",
+    "./resources/sap/m/themes/sap_fiori_3/library-parameters.json",
+    "./resources/sap/f/themes/sap_fiori_3/library-parameters.json",
+
+    "./resources/sap/f/messagebundle_en.properties",
+    "./resources/sap/ui/layout/messagebundle_en.properties",
+    "./resources/sap/m/messagebundle_en.properties",
+    "./resources/sap/ui/core/messagebundle_en.properties",
 ];
 const STATIC_CACHE: string = "ui5con-static-cache-v1";
 const DATA_CACHE: string = "ui5con-data-cache-v1";
