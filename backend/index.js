@@ -9,7 +9,7 @@
 
 	const app = express();
 	const PORT = process.env.PORT || "8080";
-	const db = "mongodb://localhost:27017/local";
+	const db = process.env.MONGO || "mongodb://localhost:27017/local";
 
 	// Connect to MongoDB with Mongoose.
 	mongoose
