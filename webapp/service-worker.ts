@@ -55,8 +55,8 @@ const FILES_TO_CACHE: string[] = [
     "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/base/fonts/SAP-icons.woff2",
     "https://sapui5.hana.ondemand.com/1.65.3/resources/sap/ui/core/themes/sap_fiori_3/fonts/72-Bold.woff2",
 ];
-const STATIC_CACHE: string = "ui5con-static-cache";
-const DATA_CACHE: string = "ui5con-data-cache";
+const STATIC_CACHE: string = "ui5con-static-cache-v1";
+const DATA_CACHE: string = "ui5con-data-cache-v1";
 
 self.addEventListener("install", (event: Event) => {
     // @ts-ignore
