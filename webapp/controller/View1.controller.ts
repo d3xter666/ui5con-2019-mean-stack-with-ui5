@@ -187,7 +187,7 @@ sap.ui.define([
 
         _getRecords(): IRecord[] {
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             const data: IRecord[] = JSON.parse(model.getJSON()).records;
 
             return data;
@@ -196,7 +196,7 @@ sap.ui.define([
         // @ts-ignore
         _updateRecords(data: IRecord[]): ui5con2019.controller.BaseController {
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             model.setData({records: data});
 
             return this;
@@ -221,7 +221,7 @@ sap.ui.define([
 
         _extendVisibleFields(response: any): void {
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             let records: IRecord[] = response.records;
 
             records = records.map((record: IRecord) => this._extendRecord(record));
@@ -231,7 +231,7 @@ sap.ui.define([
 
         _loadRecord(recordId: number, fieldsToRequest: string[]): Promise<IRecord> {
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
 
             fieldsToRequest = fieldsToRequest || this._getFieldsToRequest();
             const request = `{ record (id: ${recordId}) { ${fieldsToRequest} } }`;
@@ -248,7 +248,7 @@ sap.ui.define([
         _loadRecords(): void {
             const page: sap.m.Page = this.getView().byId("hrSystemPage");
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             const fieldsToRequest: string[] = this._getFieldsToRequest();
             const request = `{ records{ ${fieldsToRequest} } }`;
 
@@ -291,7 +291,7 @@ sap.ui.define([
 
         _persistData(data: IRecord, action?: string): Promise<IRecord> {
             // @ts-ignore
-            const model: ui5con2019.libs.ui5con.model.graphql.GraphQLModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             let fields: string[] = Object.keys(data).filter((key: string) => key !== "orderedFields");
 
             let mutation;

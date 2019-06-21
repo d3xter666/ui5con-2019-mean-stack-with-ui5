@@ -55,7 +55,7 @@
 		},
 		"models": {
 			"": {
-				"type": "ui5con2019.libs.ui5con.model.graphql.GraphQLModel"
+				"type": "ui5con2019.model.graphql.GraphQLModel"
 			},
 			"userMeta": {
 				"type": "sap.ui.model.json.JSONModel",
