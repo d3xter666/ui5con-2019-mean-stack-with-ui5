@@ -1,6 +1,9 @@
-import { mergeTypes } from "merge-graphql-schemas";
-import Record from "./Record/";
+(function (global, module) {
 
-const typeDefs = [Record];
+	const {mergeTypes} = require("merge-graphql-schemas");
+	const Record = require("./Record/index");
 
-export default mergeTypes(typeDefs, { all: true });
+	const typeDefs = [Record];
+
+	module.exports = mergeTypes(typeDefs, {all: true});
+}(this, module));

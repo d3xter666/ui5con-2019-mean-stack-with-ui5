@@ -1,7 +1,9 @@
-import { mergeResolvers } from "merge-graphql-schemas";
+(function (global, module) {
+	const {mergeResolvers} = require("merge-graphql-schemas");
 
-import Record from "./Record/";
+	const Record = require("./Record/index");
 
-const resolvers = [Record];
+	const resolvers = [Record];
 
-export default mergeResolvers(resolvers);
+	module.exports = mergeResolvers(resolvers);
+}(this, module));

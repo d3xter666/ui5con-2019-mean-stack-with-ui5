@@ -1,13 +1,15 @@
-import Record from "../models/Record";
-import mockData from "./data";
+(function (global, module) {
+	const Record = require("../models/Record");
+	const mockData = require("./data");
 
-export default new Promise((resolve, reject) => {
-	Record.findOne({}).exec((err, res) => {
-		!res ? reject(err) : resolve(res);
+	module.exports = new Promise((resolve, reject) => {
+		Record.findOne({}).exec((err, res) => {
+			!res ? reject(err) : resolve(res);
+		});
+	}).then(() => {
+		console.log("There's already import data. Skipping import...");
+	}, () => {
+		return Record.collection.insertMany(mockData)
+			.then(() => console.log("Data imported"));
 	});
-}).then(() => {
-	console.log("There's already import data. Skipping import...");
-}, () => {
-	return Record.collection.insertMany(mockData)
-		.then(() => console.log("Data imported"));
-});
+}(this, module));

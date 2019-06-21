@@ -1,4 +1,5 @@
-export default `
+(function (global, module) {
+module.exports = `
   type Record {
 		id: Int!
 		avatar: String
@@ -24,3 +25,4 @@ export default `
     deleteRecord(id: Int!): Record
   }
 `;
+}(this, module));

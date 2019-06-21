@@ -28,10 +28,6 @@
 		"@openui5/sap.f": "^1.65.4"
 	},
 	"devDependencies": {
-		"@babel/cli": "^7.4.4",
-		"@babel/core": "^7.4.4",
-		"@babel/node": "^7.2.2",
-		"@babel/preset-env": "^7.4.4",
 		"@openui5/ts-types": "^1.65.1",
 		"@ui5/cli": "^1.5.0",
 		"grunt": "^1.0.4",
@@ -44,7 +40,7 @@
 	},
 	"scripts": {
 		"start": "npm run frontend:build && npm run backend:run_prod",
-		"backend:run_prod": "babel-node ./backend/index.js",
+		"backend:run_prod": "node ./backend/index.js",
 		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
 		"frontend:ts_watch": "grunt ts:dev",
 		"frontend:ts_compile": "grunt ts:default",
