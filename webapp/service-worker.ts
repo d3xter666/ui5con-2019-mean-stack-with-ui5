@@ -42,8 +42,8 @@ const FILES_TO_CACHE: string[] = [
     "./resources/sap/m/messagebundle_en.properties",
     "./resources/sap/ui/core/messagebundle_en.properties",
 ];
-const STATIC_CACHE: string = "ui5con-static-cache-v1";
-const DATA_CACHE: string = "ui5con-data-cache-v1";
+const STATIC_CACHE: string = "ui5con-static-cache-v2";
+const DATA_CACHE: string = "ui5con-data-cache-v2";
 
 self.addEventListener("install", (event: Event) => {
     // @ts-ignore
