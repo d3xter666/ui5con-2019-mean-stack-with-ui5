@@ -11,13 +11,40 @@
 
 	<form:SimpleForm
 			editable="false"
-			layout="ResponsiveGridLayout"
-			content="{path: 'orderedFields', templateShareable: false}">
+			layout="ResponsiveGridLayout">
 		<form:content>
-			<VBox>
-				<Label text="{path: 'fieldName', formatter: '.i18nFormatter'}"/>
-				<Text text="{value}"/>
-			</VBox>
+			<Label text="{i18n>userInfoTitle}" />
+			<Text text="{title}"/>
+
+			<Label text="{i18n>userInfoFirstName}" />
+			<Text text="{first_name}"/>
+
+			<Label text="{i18n>userInfoLastName}" />
+			<Text text="{last_name}"/>
+
+			<Label text="{i18n>userInfoEmail}" />
+			<Text text="{email}"/>
+
+			<Label text="{i18n>userInfoJobTitle}" />
+			<Text text="{job_title}"/>
+
+			<Label text="{i18n>userInfoCompany}" />
+			<Text text="{company}"/>
+
+			<Label text="{i18n>userInfoDepartment}" />
+			<Text text="{department}"/>
+
+			<Label text="{i18n>userInfoSpokenLanguages}" />
+			<Text text="{languages}"/>
+
+			<Label text="{i18n>userInfoUniversity}" />
+			<Text text="{university}"/>
+
+			<Label text="{i18n>userInfoSkills}" />
+			<Text text="{skills}"/>
+
+			<Label text="{i18n>userInfoSelfDescription}" />
+			<Text text="{self_decription}"/>
 		</form:content>
 	</form:SimpleForm>
 
