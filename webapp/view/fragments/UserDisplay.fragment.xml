@@ -50,7 +50,7 @@
 
 	<OverflowToolbar design="Solid" class="sapContrast">
 		<ToolbarSpacer/>
-		<Button text="{i18n>userInfoEdit}" type="Transparent" />
-		<Button text="{i18n>userInfoDelete}" type="Transparent" />
+		<Button text="{i18n>userInfoEdit}" type="Transparent" press="handleEditRecord"/>
+		<Button text="{i18n>userInfoDelete}" type="Transparent" press="handleDeleteRecord"/>
 	</OverflowToolbar>
 </core:FragmentDefinition>
