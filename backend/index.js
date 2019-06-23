@@ -35,7 +35,7 @@
 	);
 
 	//Serve static assets from the webapp folder
-	app.use(express.static('./webapp', {
+	app.use(express.static('./dist', {
 		setHeaders: (res) => {
 			res.setHeader("Cache-Control", "public, max-age=2592000");
 			res.setHeader("Expires", new Date(Date.now() + 2592000000).toUTCString());

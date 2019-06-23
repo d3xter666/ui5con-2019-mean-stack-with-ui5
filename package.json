@@ -38,10 +38,13 @@
 		"typescript": "^3.4.5"
 	},
 	"scripts": {
+		"start": "npm run frontend:build && npm run backend:run_prod",
 		"backend:run_prod": "node ./backend/index.js",
 		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
 		"frontend:ts_watch": "grunt ts:dev",
 		"frontend:ts_compile": "grunt ts:default",
-		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json"
+		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json",
+		"frontend:ui5_build": "ui5 build self-contained --all",
+		"frontend:build": "npm run frontend:tslint && npm run frontend:ts_compile && npm run frontend:ui5_build"
 	}
 }
