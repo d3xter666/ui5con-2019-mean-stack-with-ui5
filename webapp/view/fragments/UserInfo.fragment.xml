@@ -5,11 +5,11 @@
 		xmlns:card="sap.f.cards">
 	<f:Card>
 		<f:header>
-			<card:Header title="Card's Title"/>
+			<card:Header title="{= (${title} || '') + ' ' + (${first_name} || '') + ' ' + (${last_name} || '') }" subtitle="{company}"/>
 		</f:header>
 		<f:content>
 			<VBox>
-				<Text text="Here goes the content"/>
+				<core:Fragment fragmentName="ui5con2019.view.fragments.UserDisplay" type="XML" />
 			</VBox>
 		</f:content>
 	</f:Card>

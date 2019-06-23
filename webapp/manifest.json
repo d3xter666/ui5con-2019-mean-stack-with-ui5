@@ -45,7 +45,8 @@
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.m": {},
+				"sap.f": {}
 			}
 		},
 		"contentDensities": {
@@ -53,6 +54,15 @@
 			"cozy": true
 		},
 		"models": {
+			"": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/data/mock-data.json"
+			},
+			"userMeta": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/user-meta.json",
+				"preload": true
+			},
 			"config": {
 				"type": "sap.ui.model.json.JSONModel",
 				"uri": "model/config.json",
