@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>ui5con</title>
-		<script id="sap-ui-bootstrap"
-			src="../../resources/sap-ui-core.js"
-			data-sap-ui-theme="sap_belize"
-			data-sap-ui-resourceroots='{"ui5con.ui5con": "./"}'
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>UI5Con 2019: "MEAN Stack".replace("A", "UI5")</title>
+
+	<!--	SAPUI5 1.65. Important as should align with TS definitions	-->
+	<script id="sap-ui-bootstrap"
+			src="https://sapui5.hana.ondemand.com/1.65.3/resources/sap-ui-core.js"
+			data-sap-ui-theme="sap_fiori_3"
+			data-sap-ui-resourceroots='{
+				"ui5con2019": "./"
+			}'
 			data-sap-ui-compatVersion="edge"
 			data-sap-ui-oninit="module:sap/ui/core/ComponentSupport"
 			data-sap-ui-async="true"
+			data-sap-ui-preload="async"
 			data-sap-ui-frameOptions="trusted">
-		</script>
-	</head>
-	<body class="sapUiBody">
-		<div data-sap-ui-component data-name="ui5con.ui5con" data-id="container" data-settings='{"id" : "ui5con"}'></div>
-	</body>
+	</script>
+</head>
+<body class="sapUiBody">
+<div data-sap-ui-component data-name="ui5con2019" data-id="container" data-settings='{"id" : "ui5con"}'></div>
+</body>
 </html>
