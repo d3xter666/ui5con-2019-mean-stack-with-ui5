@@ -55,8 +55,7 @@
 		},
 		"models": {
 			"": {
-				"type": "sap.ui.model.json.JSONModel",
-				"uri": "model/data/mock-data.json"
+				"type": "ui5con2019.model.graphql.GraphQLModel"
 			},
 			"userMeta": {
 				"type": "sap.ui.model.json.JSONModel",
