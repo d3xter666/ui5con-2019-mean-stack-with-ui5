@@ -28,7 +28,10 @@
 			</subHeader>
 			<content>
 				<f:GridContainer
-						id="gridLayout">
+						id="gridLayout"
+						items="{
+							path: '/records'
+						}">
 
 					<f:layout>
 						<f:GridContainerSettings columnSize="23%" gap="1rem"/>
