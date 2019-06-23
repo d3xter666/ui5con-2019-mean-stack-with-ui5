@@ -33,13 +33,17 @@ sap.ui.define([
         _dialog: null,
 
         onInit(): void {
-            // TODO: Init hook
+            this._loadRecords();
         },
 
         i18nFormatter(label: string): string {
             // @ts-ignore
             const resourceBundle: sap.base.i18n.ResourceBundle = this.getView().getModel("i18n").getResourceBundle();
             return resourceBundle.getText(label);
+        },
+
+        handleFilterPress(): void {
+            this._loadRecords();
         },
 
         handleNewItemPress(): void {
@@ -50,24 +54,29 @@ sap.ui.define([
             data.unshift(newRecord);
             this._updateRecords(data);
 
+            this._persistData(newRecord, "A");
             this._replaceFragment(container, "UserEdit");
         },
 
         handleEditRecord(event: sap.ui.base.Event): void {
-            const {container} = this._resolveEvent(event);
+            const {container, recordId} = this._resolveEvent(event);
+            const fieldsToRequest: string[] = ["id", "avatar", "title", "first_name", "last_name", "job_title",
+                "email", "company", "department", "languages", "university", "self_decription", "skills"];
 
-            this._replaceFragment(container, "UserEdit");
+            this._loadRecord(recordId, fieldsToRequest).then(() => this._replaceFragment(container, "UserEdit"));
         },
 
         handleCancelEdit(event: sap.ui.base.Event): void {
-            const {container} = this._resolveEvent(event);
+            const {container, recordId} = this._resolveEvent(event);
 
-            this._replaceFragment(container, "UserDisplay");
+            this._loadRecord(recordId).then(() => this._replaceFragment(container, "UserDisplay"));
         },
 
         handleSaveRecord(event: sap.ui.base.Event): void {
-            const {container} = this._resolveEvent(event);
+            const {container, recordId} = this._resolveEvent(event);
+            const data: IRecord = this._extractData(recordId);
 
+            this._persistData(data, "U");
             this._replaceFragment(container, "UserDisplay");
         },
 
@@ -113,8 +122,9 @@ sap.ui.define([
 
             if (indexToReplace > -1) {
                 // @ts-ignore
-                data.splice(indexToReplace, 1);
+                const removedRecord: IRecord = data.splice(indexToReplace, 1);
                 this._updateRecords(data);
+                this._persistData(removedRecord[0], "D");
             }
         },
 
@@ -155,9 +165,28 @@ sap.ui.define([
             return id;
         },
 
+        _extractData(recordId: number): IRecord {
+            const data: IRecord[] = this._getRecords();
+            const record: IRecord = data.filter((curRecord: IRecord) => curRecord.id === recordId)[0];
+            const avatarMap: object = {
+                Mr: "user.svg",
+                Mrs: "avatar.svg",
+                Dr: "graduation.svg",
+                Ms: "woman.svg",
+                Honorable: "manager.svg",
+                Rev: "manager_1.svg",
+            };
+
+            if (record && record.title && avatarMap[record.title]) {
+                record.avatar = "./assets/images/" + avatarMap[record.title];
+            }
+
+            return record || null;
+        },
+
         _getRecords(): IRecord[] {
             // @ts-ignore
-            const model: sap.ui.model.json.JSONModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             const data: IRecord[] = JSON.parse(model.getJSON()).records;
 
             return data;
@@ -166,10 +195,89 @@ sap.ui.define([
         // @ts-ignore
         _updateRecords(data: IRecord[]): ui5con2019.controller.BaseController {
             // @ts-ignore
-            const model: sap.ui.model.json.JSONModel = this.getView().getModel();
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
             model.setData({records: data});
 
             return this;
+        },
+
+        _extendRecord(record: IRecord): IRecord {
+            const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
+            const {selectableFields} = JSON.parse(config.getJSON());
+
+            // @ts-ignore
+            const fields = selectableFields.filter((field: object) => record[field.field] !== undefined)
+                .map((field: object) => {
+                    // @ts-ignore
+                    return {...field, value: record[field.field]};
+                });
+
+            return {
+                ...record,
+                orderedFields: fields,
+            };
+        },
+
+        _extendVisibleFields(response: any): void {
+            // @ts-ignore
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
+            let records: IRecord[] = response.records;
+
+            records = records.map((record: IRecord) => this._extendRecord(record));
+
+            model.setData({records});
+        },
+
+        _loadRecord(recordId: number, fieldsToRequest: string[]): Promise<IRecord> {
+            // @ts-ignore
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
+
+            fieldsToRequest = fieldsToRequest || this._getFieldsToRequest();
+            const request = `{ record (id: ${recordId}) { ${fieldsToRequest} } }`;
+
+            return model.query("/graphql", request, false)
+                .then((response: any) => {
+                    const record: IRecord = this._extendRecord(response.record);
+                    this._replaceRecordInModel(record);
+
+                    return record;
+                });
+        },
+
+        _loadRecords(): void {
+            const page: sap.m.Page = this.getView().byId("hrSystemPage");
+            // @ts-ignore
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
+            const fieldsToRequest: string[] = this._getFieldsToRequest();
+            const request = `{ records{ ${fieldsToRequest} } }`;
+
+            page.setBusy(true);
+
+            model.query("/graphql", request, false)
+                .then((response: any) => {
+                    this._extendVisibleFields(response);
+                })
+                .finally(() => page.setBusy(false));
+        },
+
+        _getFieldsToRequest(): string[] {
+            const config: sap.ui.model.json.JSONModel = this.getView().getModel("config");
+            const {visibleFields} = JSON.parse(config.getJSON());
+            return ["id", "avatar"].concat(visibleFields);
+        },
+
+        _replaceRecordInModel(record: IRecord): boolean {
+            const data: IRecord[] = this._getRecords();
+            const indexToReplace = data.map((r: IRecord) => r.id).indexOf(record.id);
+
+            if (indexToReplace > -1) {
+                data.splice(indexToReplace, 1, record);
+                this._updateRecords(data);
+
+                return true;
+            }
+
+            return false;
         },
 
         _resolveEvent(event: sap.ui.base.Event): object {
@@ -178,6 +286,37 @@ sap.ui.define([
             const recordId: number = this._extractId(container);
 
             return {container, recordId};
+        },
+
+        _persistData(data: IRecord, action?: string): Promise<IRecord> {
+            // @ts-ignore
+            const model: ui5con2019.model.graphql.GraphQLModel = this.getView().getModel();
+            let fields: string[] = Object.keys(data).filter((key: string) => key !== "orderedFields");
+
+            let mutation;
+            switch (action) {
+                case "D":
+                    fields = ["id"];
+                    mutation = "deleteRecord";
+                    break;
+                case "U":
+                    mutation = "editRecord";
+                    break;
+                default:
+                    mutation = "addRecord";
+                    break;
+            }
+
+            const stringifiedData: string = fields
+                .map((fieldName) => fieldName + ": " + JSON.stringify(data[fieldName])).join(", ");
+            const query = `mutation { ${mutation}(${stringifiedData}) { ${this._getFieldsToRequest()} } }`;
+
+            return model.query("/graphql", query, false).then((response: any) => {
+                const record: IRecord = this._extendRecord(response[mutation]);
+                this._replaceRecordInModel(record);
+
+                return record;
+            });
         },
     });
 });
