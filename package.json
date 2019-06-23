@@ -1,17 +1,42 @@
 {
-  "name": "ui5con",
-  "version": "0.0.1",
-  "description": "",
-  "private": true,
-  "dependencies": {
-	"typescript": "^3.4.5"
-  },
-  "devDependencies": {
-	"@sap/grunt-sapui5-bestpractice-build": "1.3.65",
-	"@sap/grunt-sapui5-bestpractice-test": "2.0.1",
-	"@ui5/cli": "^1.3.0"
-  },
-  "scripts": {
-	"test": "grunt unit_and_integration_tests"
-  }
+	"name": "mean_with_ui5",
+	"version": "1.0.0",
+	"description": "Build UI5 full stack app with TypeScript & Node + Express + GraphQL + MongoDB backend",
+	"contributors": [
+		{
+			"name": "Petya Markova-Bogdanova",
+			"email": "petya.markova-bogdanova@sap.com"
+		},
+		{
+			"name": "Yavor Ivanov",
+			"email": "yavor.ivanov@sap.com"
+		}
+	],
+	"private": true,
+	"dependencies": {
+		"body-parser": "^1.19.0",
+		"cors": "^2.8.5",
+		"express": "^4.16.4",
+		"express-graphql": "^0.8.0",
+		"graphql": "^14.3.0",
+		"graphql-tools": "^4.0.4",
+		"merge-graphql-schemas": "^1.5.8",
+		"mongoose": "^5.5.6",
+		"@openui5/sap.m": "^1.65.4",
+		"@openui5/sap.ui.core": "^1.65.4",
+		"@openui5/sap.ui.layout": "^1.65.4",
+		"@openui5/sap.f": "^1.65.4",
+		"@openui5/themelib_sap_fiori_3": "^1.65.4"
+	},
+	"devDependencies": {
+		"@openui5/ts-types": "^1.65.1",
+		"@ui5/cli": "^1.5.0",
+		"grunt": "^1.0.4",
+		"grunt-ts": "^6.0.0-beta.22",
+		"nodemon": "^1.19.0",
+		"tslint": "^5.16.0",
+		"typescript": "^3.4.5"
+	},
+	"scripts": {
+	}
 }
