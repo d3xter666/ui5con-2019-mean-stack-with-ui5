@@ -1,64 +1,51 @@
 (function (global, module) {
 
-	const records = require("../../../mock-data/data");
+	// The Record schema.
+	const Record = require("../../../models/Record");
 
 	module.exports = {
 		Query: {
 			record: (root, args) => {
 				return new Promise((resolve, reject) => {
-					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
-
-					if (record) {
-						resolve(record);
-					} else {
-						reject("Not found");
-					}
+					Record.findOne(args).exec((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			},
 			records: () => {
 				return new Promise((resolve, reject) => {
-					resolve(records);
+					Record.find({}, null, {sort: {id: -1}})
+						.populate()
+						.exec((err, res) => {
+							err ? reject(err) : resolve(res);
+						});
 				});
 			}
 		},
 		Mutation: {
 			addRecord: (root, args) => {
-				const newRecord = args;
-
-				records.push(newRecord);
+				const newRecord = new Record(args);
 
 				return new Promise((resolve, reject) => {
-					resolve(newRecord);
+					newRecord.save((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			},
 			editRecord: (root, args) => {
 				return new Promise((resolve, reject) => {
-					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
-
-					if (!record) {
-						reject("Not found");
-					}
-
-					Object.keys(args).forEach((key) => {
-						record[key] = args[key];
-					});
-
-					resolve(record);
+					Record.findOneAndUpdate({id: args.id}, {$set: args}, {new: true}).exec(
+						(err, res) => {
+							err ? reject(err) : resolve(res);
+						}
+					);
 				});
 			},
 			deleteRecord: (root, {id}) => {
 				return new Promise((resolve, reject) => {
-					const record = records.filter((curRecord) => curRecord.id === id)[0];
-
-					if (!record) {
-						reject("Not found");
-					}
-
-					const index = records.indexOf(record);
-					records.splice(index, 1);
-
-					resolve(record);
-
+					Record.findOneAndRemove({id: id}).exec((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			}
 		}
