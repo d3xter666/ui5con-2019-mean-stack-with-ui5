@@ -34,16 +34,6 @@
 		})
 	);
 
-	app.use(
-		"/graphql",
-		cors(),
-		bodyParser.json(),
-		expressGraphql({
-			schema,
-			graphiql: true
-		})
-	);
-
 	//Serve static assets from the webapp folder
 	app.use(express.static('./webapp', {
 		setHeaders: (res) => {
