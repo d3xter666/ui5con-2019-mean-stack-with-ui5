@@ -53,6 +53,11 @@
 			"cozy": true
 		},
 		"models": {
+			"config": {
+				"type": "sap.ui.model.json.JSONModel",
+				"uri": "model/config.json",
+				"preload": true
+			},
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
