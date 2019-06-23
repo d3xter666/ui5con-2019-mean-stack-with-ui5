@@ -23,7 +23,7 @@
 
 					<ToolbarSpacer/>
 
-					<Button text="{i18n>userInfoNewUser}" type="Ghost"/>
+					<Button text="{i18n>userInfoNewUser}" press="handleNewItemPress" type="Ghost"/>
 				</Toolbar>
 			</subHeader>
 			<content>
