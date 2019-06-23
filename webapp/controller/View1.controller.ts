@@ -7,5 +7,11 @@ sap.ui.define([
         onInit(): void {
             // TODO: Init hook
         },
+
+        i18nFormatter(label: string): string {
+            // @ts-ignore
+            const resourceBundle: sap.base.i18n.ResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+            return resourceBundle.getText(label);
+        },
     });
 });

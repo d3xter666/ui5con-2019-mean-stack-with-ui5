@@ -1,11 +1,45 @@
-<mvc:View controllerName="ui5con2019.controller.View1" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<Shell id="shell">
-		<App id="app">
-			<pages>
-				<Page id="page" title="{i18n>title}">
-					<content></content>
-				</Page>
-			</pages>
-		</App>
-	</Shell>
+<mvc:View
+		controllerName="ui5con2019.controller.View1"
+		xmlns:mvc="sap.ui.core.mvc"
+		displayBlock="true"
+		xmlns="sap.m"
+		xmlns:f="sap.f"
+		xmlns:core="sap.ui.core">
+	<App>
+		<Page title="{i18n>appTitle}" class="sapUiContentPadding" id="hrSystemPage">
+			<subHeader>
+				<Toolbar>
+					<Label text="Visible Fields:"/>
+					<MultiComboBox width="15rem"
+								   selectedKeys="{config>/visibleFields}"
+								   items="{
+										path: 'config>/selectableFields',
+										templateShareable: false
+									}">
+						<core:Item key="{config>field}" text="{ path: 'config>fieldName', formatter: '.i18nFormatter' }"/>
+					</MultiComboBox>
+
+					<Button text="{i18n>goBtn}" type="Emphasized"/>
+
+					<ToolbarSpacer/>
+
+					<Button text="{i18n>userInfoNewUser}" type="Ghost"/>
+				</Toolbar>
+			</subHeader>
+			<content>
+				<f:GridContainer
+						id="gridLayout">
+
+					<f:layout>
+						<f:GridContainerSettings columnSize="23%" gap="1rem"/>
+					</f:layout>
+					<f:layoutS>
+						<f:GridContainerSettings columnSize="100%" gap="1rem"/>
+					</f:layoutS>
+
+					<core:Fragment fragmentName="ui5con2019.view.fragments.UserInfo" type="XML"/>
+				</f:GridContainer>
+			</content>
+		</Page>
+	</App>
 </mvc:View>

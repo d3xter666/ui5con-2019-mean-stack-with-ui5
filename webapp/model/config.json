@@ -1,0 +1,23 @@
+{
+  "visibleFields": [
+	"avatar",
+	"title",
+	"first_name",
+	"last_name",
+	"skills"
+  ],
+  "selectableFields": [
+	{"field": "title", "fieldName": "userInfoTitle"},
+	{"field": "first_name", "fieldName": "userInfoFirstName"},
+	{"field": "last_name", "fieldName": "userInfoLastName"},
+	{"field": "job_title", "fieldName": "userInfoJobTitle"},
+	{"field": "email", "fieldName": "userInfoEmail"},
+	{"field": "company", "fieldName": "userInfoCompany"},
+	{"field": "department", "fieldName": "userInfoDepartment"},
+	{"field": "languages", "fieldName": "userInfoSpokenLanguages"},
+	{"field": "university", "fieldName": "userInfoUniversity"},
+	{"field": "self_decription", "fieldName": "userInfoSelfDescription"},
+	{"field": "skills", "fieldName": "userInfoSkills"}
+  ]
+}
+
