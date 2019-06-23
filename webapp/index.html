@@ -1,8 +1,21 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+	<!-- PWA Manifest -->
+	<link rel="manifest" href="offline/manifest.json"/>
+	<!-- iOS meta tags and icons -->
+	<meta name="apple-mobile-web-app-capable" content="yes"/>
+	<meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+	<meta name="apple-mobile-web-app-title" content="UI5Con 2019: 'MEAN Stack'.replace('A', 'UI5')"/>
+	<link rel="apple-touch-icon" href="./assets/images/logo-small.png"/>
+	<!-- App description -->
+	<meta name="description" content="UI5Con 2019 Demo Application"/>
+	<!-- App theme color -->
+	<meta name="theme-color" content="#FF5A37"/>
+
 	<title>UI5Con 2019: "MEAN Stack".replace("A", "UI5")</title>
 
 	<!--	SAPUI5 1.65. Important as should align with TS definitions	-->
@@ -19,7 +32,8 @@
 			data-sap-ui-frameOptions="trusted">
 	</script>
 </head>
-<body class="sapUiBody">
-<div data-sap-ui-component data-name="ui5con2019" data-id="container" data-settings='{"id" : "ui5con"}'></div>
+<body class="sapUiBody sapUiSizeCompact">
+	<div data-sap-ui-component data-name="ui5con2019" data-id="container" data-settings='{"id" : "ui5con"}'></div>
+	<noscript>Please enable JavaScript on your browser in order to run the application</noscript>
 </body>
 </html>
