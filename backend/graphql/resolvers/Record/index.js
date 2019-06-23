@@ -1,56 +1,51 @@
 (function (global, module) {
 
-	const records = require("../../../mock-data/data");
+	// The Record schema.
+	const Record = require("../../../models/Record");
 
 	module.exports = {
 		Query: {
 			record: (root, args) => {
-				return new Promise((resolve) => {
-					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
-
-					resolve(record);
+				return new Promise((resolve, reject) => {
+					Record.findOne(args).exec((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			},
 			records: () => {
-				return new Promise((resolve) => {
-					resolve(records);
+				return new Promise((resolve, reject) => {
+					Record.find({}, null, {sort: {id: -1}})
+						.populate()
+						.exec((err, res) => {
+							err ? reject(err) : resolve(res);
+						});
 				});
 			}
 		},
 		Mutation: {
 			addRecord: (root, args) => {
-				const newRecord = args;
+				const newRecord = new Record(args);
 
-				records.push(newRecord);
-
-				return new Promise((resolve) => {
-					resolve(newRecord);
+				return new Promise((resolve, reject) => {
+					newRecord.save((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			},
 			editRecord: (root, args) => {
-				return new Promise((resolve) => {
-					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
-
-					if (record) {
-						Object.keys(args).forEach((key) => {
-							record[key] = args[key];
-						});
-					}
-
-					resolve(record);
+				return new Promise((resolve, reject) => {
+					Record.findOneAndUpdate({id: args.id}, {$set: args}, {new: true}).exec(
+						(err, res) => {
+							err ? reject(err) : resolve(res);
+						}
+					);
 				});
 			},
 			deleteRecord: (root, {id}) => {
-				return new Promise((resolve) => {
-					const record = records.filter((curRecord) => curRecord.id === id)[0];
-
-					if (record) {
-						const index = records.indexOf(record);
-						records.splice(index, 1);
-					}
-
-					resolve(record);
-
+				return new Promise((resolve, reject) => {
+					Record.findOneAndRemove({id: id}).exec((err, res) => {
+						err ? reject(err) : resolve(res);
+					});
 				});
 			}
 		}
