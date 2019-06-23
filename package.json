@@ -22,11 +22,11 @@
 		"graphql-tools": "^4.0.4",
 		"merge-graphql-schemas": "^1.5.8",
 		"mongoose": "^5.5.6",
-		"@openui5/sap.m": "^1.65.4",
-		"@openui5/sap.ui.core": "^1.65.4",
-		"@openui5/sap.ui.layout": "^1.65.4",
-		"@openui5/sap.f": "^1.65.4",
-		"@openui5/themelib_sap_fiori_3": "^1.65.4"
+		"@openui5/sap.m": "1.65.4",
+		"@openui5/sap.ui.core": "1.65.4",
+		"@openui5/sap.ui.layout": "1.65.4",
+		"@openui5/sap.f": "1.65.4",
+		"@openui5/themelib_sap_fiori_3": "1.65.4"
 	},
 	"devDependencies": {
 		"@openui5/ts-types": "^1.65.1",
