@@ -24,6 +24,7 @@
 					<ToolbarSpacer/>
 
 					<Button text="{i18n>userInfoNewUser}" press="handleNewItemPress" type="Ghost"/>
+					<Button id="installBtn" press="handleInstallButtonPress" icon="sap-icon://product" visible="false" />
 				</Toolbar>
 			</subHeader>
 			<content>
