@@ -4,7 +4,7 @@
 	const mongoose = require("mongoose");
 	const bodyParser = require("body-parser");
 	const cors = require("cors");
-	const schema = require("./graphql/");
+	const schema = require("./graphql/index");
 	const dataImporter = require("./mock-data/import-data");
 
 	const app = express();
@@ -23,6 +23,16 @@
 		.then(dataImporter)
 		.then(() => console.log("Mongo collection loaded"))
 		.catch(err => console.log(err));
+
+	app.use(
+		"/graphql",
+		cors(),
+		bodyParser.json(),
+		expressGraphql({
+			schema,
+			graphiql: true
+		})
+	);
 
 	app.use(
 		"/graphql",
