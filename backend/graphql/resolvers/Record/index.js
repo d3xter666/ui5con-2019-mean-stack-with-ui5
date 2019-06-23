@@ -5,18 +5,14 @@
 	module.exports = {
 		Query: {
 			record: (root, args) => {
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
 
-					if (record) {
-						resolve(record);
-					} else {
-						reject("Not found");
-					}
+					resolve(record);
 				});
 			},
 			records: () => {
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					resolve(records);
 				});
 			}
@@ -27,35 +23,31 @@
 
 				records.push(newRecord);
 
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					resolve(newRecord);
 				});
 			},
 			editRecord: (root, args) => {
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					const record = records.filter((curRecord) => curRecord.id === args.id)[0];
 
-					if (!record) {
-						reject("Not found");
+					if (record) {
+						Object.keys(args).forEach((key) => {
+							record[key] = args[key];
+						});
 					}
-
-					Object.keys(args).forEach((key) => {
-						record[key] = args[key];
-					});
 
 					resolve(record);
 				});
 			},
 			deleteRecord: (root, {id}) => {
-				return new Promise((resolve, reject) => {
+				return new Promise((resolve) => {
 					const record = records.filter((curRecord) => curRecord.id === id)[0];
 
-					if (!record) {
-						reject("Not found");
+					if (record) {
+						const index = records.indexOf(record);
+						records.splice(index, 1);
 					}
-
-					const index = records.indexOf(record);
-					records.splice(index, 1);
 
 					resolve(record);
 
