@@ -22,7 +22,7 @@ sap.ui.define([
          * @public
          * @override
          */
-        init() {
+        init(): void {
             // call the base component's init function
             // @ts-ignore
             UIComponent.prototype.init.apply(this, arguments);
