@@ -59,3 +59,14 @@ typings/
 
 # next.js build output
 .next
+
+# WebStorm
+.idea
+
+# Distribution folder
+dist
+
+# App specific
+webapp/controller/*.js
+webapp/controller/*.map
+webapp/*.js

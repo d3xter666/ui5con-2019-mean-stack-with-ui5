@@ -1,0 +1,24 @@
+// https://www.typescriptlang.org/docs/handbook/tsconfig-json.html
+{
+  // https://www.typescriptlang.org/docs/handbook/compiler-options.html
+  "compilerOptions": {
+	"rootDir": "./webapp",
+	"sourceMap": true,
+	"strictNullChecks": true,
+	"module": "none",
+	"target": "es5",
+	"types": [
+	  "@openui5/ts-types"
+	]
+  },
+  "include": [
+	"./webapp/*",
+	"./webapp/**/*"
+  ],
+  "exclude": [
+	"./webapp/test/*",
+	"./webapp/test/**/*",
+	"./node_modules",
+	"./backend"
+  ]
+}

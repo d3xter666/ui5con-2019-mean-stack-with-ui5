@@ -39,6 +39,9 @@
 	},
 	"scripts": {
 		"backend:run_prod": "node ./backend/index.js",
-		"backend:run_dev": "nodemon --exec npm run backend:run_prod"
+		"backend:run_dev": "nodemon --exec npm run backend:run_prod",
+		"frontend:ts_watch": "grunt ts:dev",
+		"frontend:ts_compile": "grunt ts:default",
+		"frontend:tslint": "tslint -c tslint.json -p tsconfig.json"
 	}
 }
