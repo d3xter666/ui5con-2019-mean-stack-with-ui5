@@ -67,6 +67,9 @@ typings/
 dist
 
 # App specific
+webapp/model/*.js
+webapp/model/*.map
 webapp/controller/*.js
 webapp/controller/*.map
 webapp/*.js
+webapp/*.map
