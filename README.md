@@ -19,9 +19,5 @@ When done, run the following NPM command:
 npm install
 ```
 
----
-[Jump To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
-
-OR 
-
-[See Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
+- [Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/00_webapp_template...01_configure_project_dependencies)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
