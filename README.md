@@ -6,22 +6,11 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-Now we're going to install all the dependencies needed for that project.
+In this step we'll build a static NodeJS web server to serve the content in ```/webapp``` folder.
 
-Download the following files and (re)place them in the root folder of the project.
-- [package.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package.json)
-- [package-lock.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package-lock.json)
-
-
-When done, run the following NPM command:
-
-```bash
-npm install
-```
+We'll also need to change UI5 bootstrap link to point to the CDN. 
 
 ---
-[Jump To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
 
-OR 
-
-[See Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
+- [Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/03_frontend_typescript_configurations)
