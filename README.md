@@ -6,11 +6,22 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-This is just the UI5 bootrsaping template from SAP WebIDE.
+Now we're going to install all the dependencies needed for that project.
+
+Download the following files and (re)place them in the root folder of the project.
+- [package.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package.json)
+- [package-lock.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package-lock.json)
+
+
+When done, run the following NPM command:
+
+```bash
+npm install
+```
 
 ---
-[Jup To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/01_configure_project_dependencies)
+[Jup To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
 
 OR 
 
-[See Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/00_webapp_template...01_configure_project_dependencies)
+[See Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
