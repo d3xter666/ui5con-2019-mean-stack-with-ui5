@@ -7,21 +7,21 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Agenda
 
-1. Bootstrap- initial project with dependencies. Describe needed packages
-2. Build a simple static server
+1. Bootstrap- initial project with dependencies.
+2. Build a simple static server.
 3. Build the frontend
-    - Split into steps
     - Rename all JS files to TS
+    - Switch to ES6 syntax
     - Layouts
         - Use mock data
     - Enable CRUD (mocked)
 4. Backend + GraphQL
 5. Integrate frontend with the backend
-    - Create GraphQL library
+    - Create GraphQL model
     - Enable real CRUD
-6. Build a self containing app
+6. Build a self-containing app
     - Change static server to serve content from the /dist folder
-    - Switch Service Worker caches to the /dist folder + Component-preload
+    - Switch Service Worker caches to the /dist folder
 7. Build a Progressive Web App with UI5
     - manifest
     - Service Worker
