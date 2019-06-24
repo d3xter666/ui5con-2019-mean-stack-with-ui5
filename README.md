@@ -20,7 +20,7 @@ npm install
 ```
 
 ---
-[Jup To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
+[Jump To The Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
 
 OR 
 
