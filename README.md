@@ -8,7 +8,13 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 In this step we'll build a static NodeJS web server to serve the content in ```/webapp``` folder.
 
-We'll also need to change UI5 bootstrap link to point to the CDN. 
+We'll also need to change UI5 bootstrap link in ```/webapp/index.html``` to point to the CDN.
+
+#### Modified Files in this step
+
+-  :new: ```backend/index.js```
+- :small_orange_diamond: ``` webapp/index.html```
+- :small_orange_diamond: ```package.json```
 
 ---
 
