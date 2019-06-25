@@ -6,15 +6,7 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-In this step we'll slightly make a transition from plain JS to TypeScript.
-
-As TypeScript is a superset of JavaScript, it's perfectly fine to start by changing all JS files extensions from ``.js`` to ``.ts``.
-
-If you run TSLint checks ```npm run frontend:tslint``` it'd fail.
-
-But if you try to compile the files ``npm run frontend:ts_compile``, the compilation would finish successfully. And the result would be exactly the same files, but with ``.js`` extension.
-
-Because we switched to TypeScript, we won't need ``.js`` files to be tracked by Git. They would be just a result of the build. So, we'd add few lines, ignoring files with ``.js`` extension in our project.
+In this step we'll update the ``.ts`` files in order to be valid TypeScript and pass the TSLint checks. 
 
 #### Modified Files in this step
 

@@ -1,11 +1,11 @@
 sap.ui.define([
-    "sap/ui/core/mvc/Controller"
-], function (Controller) {
-    "use strict";
+    "sap/ui/core/mvc/Controller",
+], (Controller: sap.ui.core.mvc.Controller) => {
 
-    return Controller.extend("ui5con2019.controller.View1", {
-        onInit: function () {
-
-        }
+    // @ts-ignore
+    return Controller.extend("ui5con2019.controller.BaseController", {
+        onInit(): void {
+            // TODO: Init hook
+        },
     });
 });
