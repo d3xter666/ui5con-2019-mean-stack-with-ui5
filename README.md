@@ -6,24 +6,35 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-Here we'll build a basic page with the new  [sap.f.GridContainer](https://sapui5.hana.ondemand.com/#/api/sap.f.GridContainer) layout and would put a simple [sap.f.Card](https://sapui5.hana.ondemand.com/#/api/sap.f.Card) in it.
+In this step we'll enhance our application by providing content to the ``sap.f.Card``.
 
-At the top of the page there would be some controls which we'll use later (when we integrate backend with the frontend) to filter the results.
+We'll also use a mocked data (a json file) to display some information in the card.
 
-There's also a simple [config](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-d342f56f7c37b869624cd6d9a66cb2dd) file which holds filters' default selections and values. 
+The information in the mocked json would allow us to bind to the GridContainer and reveal more than one card.
+
+#### Download the assets
+
+- [``webapp/assets/images/avatar.svg``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/avatar.svg)
+- [`` webapp/assets/images/graduation.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/graduation.svg)
+- [`` webapp/assets/images/logo-big.png ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/logo-big.png)
+- [`` webapp/assets/images/logo-small.png ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/logo-small.png)
+- [`` webapp/assets/images/logo.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/logo.svg)
+- [`` webapp/assets/images/manager.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/manager.svg)
+- [`` webapp/assets/images/manager_1.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/manager_1.svg)
+- [`` webapp/assets/images/user.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/user.svg)
+- [`` webapp/assets/images/woman.svg ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/assets/images/woman.svg)
+- [`` webapp/model/data/mock-data.json ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/model/data/mock-data.json)
+- [`` webapp/model/user-meta.json ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/00c6135372ef0247233d9aa5d1fa06ef04a84c38/webapp/model/user-meta.json)
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [```webapp/controller/View1.controller.ts```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-3844c0d509dc360fa3e6fa72c04a8c43)
-- :small_orange_diamond: [``` webapp/i18n/i18n.properties ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-e42b9708d5f54a64844854bda1f17af2)
-- :new: [``` webapp/i18n/i18n_en_US.properties ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-7ab87daa4022aaa11e930b8ca9393acf)
-- :small_orange_diamond: [``` webapp/manifest.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-b1bdec94bfccfdfade7639fdc328fd97)
-- :new: [``` webapp/model/config.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-d342f56f7c37b869624cd6d9a66cb2dd)
-- :small_orange_diamond: [``` webapp/view/View1.view.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-7d16669b9b015ff9210f8b6c920cc927)
-- :new: [``` webapp/view/fragments/UserInfo.fragment.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-9de42b413dbbbdd5539130da9eb94c95)
+- :small_orange_diamond: [```webapp/manifest.json```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/05_frontend_main_view...06_frontend_mock_data#diff-b1bdec94bfccfdfade7639fdc328fd97)
+- :small_orange_diamond: [``` webapp/view/View1.view.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/05_frontend_main_view...06_frontend_mock_data#diff-7d16669b9b015ff9210f8b6c920cc927)
+- :new: [``` webapp/view/fragments/UserDisplay.fragment.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/05_frontend_main_view...06_frontend_mock_data#diff-8273dda6b30a149d8fb9c570b063c686)
+- :small_orange_diamond: [``` webapp/view/fragments/UserInfo.fragment.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/05_frontend_main_view...06_frontend_mock_data#diff-9de42b413dbbbdd5539130da9eb94c95)
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/05_frontend_main_view...06_frontend_mock_data)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/06_frontend_mock_data)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/07_frontend_CRUD_mocked)
