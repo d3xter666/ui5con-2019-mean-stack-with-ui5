@@ -12,11 +12,11 @@ We'll also need to change UI5 bootstrap link in ```/webapp/index.html``` to poin
 
 #### Modified Files in this step
 
--  :new: ```backend/index.js```
-- :small_orange_diamond: ``` webapp/index.html```
-- :small_orange_diamond: ```package.json```
+-  :new: [```backend/index.js```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server#diff-88c27a1520c87d0681d9900173d92c57)
+- :small_orange_diamond: [``` webapp/index.html```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server#diff-993d50876f35e232013fe86cdcef31f2)
+- :small_orange_diamond: [```package.json```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server#diff-b9cfc7f2cdf78a7f4b91a753d10865a2)
+
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
 
 ---
-
-- [Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/01_configure_project_dependencies...02_simple_static_server)
 - [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/03_frontend_typescript_configurations)
