@@ -10,6 +10,8 @@ Here we'll build a basic page with the new  [sap.f.GridContainer](https://sapui5
 
 At the top of the page there would be some controls which we'll use later (when we integrate backend with the frontend) to filter the results.
 
+There's also a simple [config](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-d342f56f7c37b869624cd6d9a66cb2dd) file which holds filters' default selections and values. 
+
 #### Modified Files in this step
 
 - :small_orange_diamond: [```webapp/controller/View1.controller.ts```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/04_1_switch_to_typescript...05_frontend_main_view#diff-3844c0d509dc360fa3e6fa72c04a8c43)
