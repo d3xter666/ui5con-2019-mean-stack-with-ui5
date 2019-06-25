@@ -8,7 +8,7 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 In this step we'll update the ``.ts`` files in order to be valid TypeScript and pass the TSLint checks.
 
-After completing this step run ``npm run frontend:tslint`` to see the results. Successfully validate ``.ts`` files. 
+After completing this step run ``npm run frontend:tslint`` to see the results- successfully validated ``.ts`` files. 
 
 #### Modified Files in this step
 
