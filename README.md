@@ -4,82 +4,39 @@ In the UI5 world there is a belief that UI5 is not to be used out of the SAP wor
 In our session we will show you how you can use UI5 “out of the box” and easily integrate our framework into any hype or stack.
 We’ll build a modern full stack App from scratch, using OpenUI5 as frontend layer.
 
+## Optional Step
+
+This step is optional. If you don't have MognoDB installed on your system, you might skip it.
+
+If you have a Docker instance running, you could build a MongoDB container with the following command:
+
+```bash
+docker run -d -p 27017:27017 --name ui5-mongodb mongo:3.4
+```
+
 ## Steps
 
+Here we would integrate MongoDB within the GraphQL server. That way we'll have a real percistency of the data.
 
-In this step we'll build our GraphQL server on top of NodeJS + Express.
-When you finish it, you'll have running GrpahQL server available at: [`` http://localhost:8080/graphql ``](http://localhost:8080/graphql).
+For managing MongoDB queries we'll use Mongoose. It's an ORM layer on top of MongoDB native driver. It supports schemas and types.
 
-Now the server would be responsible for the GraphQL requests as well as serving the static content (02_simple_static_server step).
+The Mongoose schema is described in ``` backend/models/Records.js ```. As you could see it's similar to the GraphQL type that we defined earlier, but it's in JSON format.
 
-GraphQL comes with a built-in Web Client. When you're ready with this step, you could explore it at [`` http://localhost:8080/graphql ``](http://localhost:8080/graphql)
+There's also a simple script ``` backend/mock-data/import-data.js ``` which would import the mocked data defined in ``` backend/mock-data/data.js ```. That way it'd be easier to start exploring. Data gets imported automatically to MongoDB when you start the server. If you restart it, data won't be overwritten.
 
-**Note:** This is just the GraphQL server and it's still not integrated with any persistency storage. In the next step (which is optional, if you don't have MongoDB installed on your system), we'll integrate GraphQL with MongoDB.
+The real integration is within the ``` backend/graphql/resolvers/Record/index.js ```. As we saw earlier, there are the methods that would be called on GraphQL query. So, we're just proxying the call to the Mongoose and it writes to MongoDB.
 
-Although GraphQL is still not integrated with MongoDB, you would get results when do a query. This is because the ``resolver`` is made to use a mocked json file. It's (almost) the same json that we used in the frontend. 
-
-#### GraphQL
-
-There are several interesting points when we're exploring GraphQL: types, resolvers and the mapping between them.
-
-##### GraphQL Types
-
-All GraphQL structures and queries have types and should be described somewhere. In out project, it's handled in ``` backend/graphql/types/Record/index.js ```.
-
-What's interesting here is that we have the structure of a type "Record" and all the queries that we could do with it.
-
-There are several types of queries in GraphQL and we'll use ``Query`` and ``Mutation`` in our project.
-
-The ``Query`` query fetches records from GraphQL. You could think of it as a way of getting data.
-
-``Mutation`` queries are meant to be used for data modifications.
-
-##### GraphQL Resolvers
-
-The resolvers in our project are located in ``` backend/graphql/resolvers/Record/index.js ```.
-
-You could easily see that resolvers mimic the structure defined in types. In other words, we have the following type defintion:
-
-```
-...
-  type Mutation {
-    addRecord(id: Int, avatar: String, title: String, first_name: String, last_name: String, job_title: String, email: String, company: String, department: String, languages: [String], university: String, self_decription: String, skills: [String]): Record
-...
-```
-
-on which we could execute the following query (mutation)
-
-```
-mutation{
-  addRecord(id: 32, first_name:"John", last_name:"Doe") {
-    id, first_name
-  }
-}
-```
-
-GraphQL would call for you ``Mutation.addRecord()`` method from ``` backend/graphql/resolvers/Record/index.js ```.
-The ``args`` parameter would be a JSON object with the data provided in the query ``{id: 32, first_name:"John", last_name:"Doe"}``
-
-You might be wondering why we provide some field names within the curly braces. That's how we request from GraphQL certain fields.
-This is one of the greatest benefits on using GraphQL over REST- you could manage the valume of data returned. This functionality comes out of the box.
-So, in the query above we'll add a Record and the response would return Record's ``id`` and ``first_name`` fields.
-
-
-#### Download the assets
-
-- [``backend/mock-data/data.js ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/de8ad270cc0bb4261cb404aea7e28e4013adef98/backend/mock-data/data.js)
+When you finish this task, you could open [``http://localhost:8080/graphql``](http://localhost:8080/graphql) and play around. Try to restart the server and check that the data is actually saved.
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` backend/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-88c27a1520c87d0681d9900173d92c57)
-- :new: [``` backend/graphql/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-0a5b4ccbe01be8d404c08fa2fbb28e45)
-- :new: [``` backend/graphql/types/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-e75e6e1c759aead75ba9c0d094618a71)
-- :new: [``` backend/graphql/types/Record/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-1da3c3bac9ba4d18dc6cc32faf7ef428)
-- :new: [``` backend/graphql/resolvers/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-b47d99141e893d90c1e427b5217951a5)
-- :new: [``` backend/graphql/resolvers/Record/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-07df6d57fc733795bb85dbab1fb3738d)
+- :small_orange_diamond: [``` backend/index.js ```]()
+- :small_orange_diamond: [``` backend/graphql/resolvers/Record/index.js ```]()
+- :new: [``` backend/mock-data/import-data.js ```]()
+- :new: [``` backend/models/Records.js ```]()
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/09_graphql_mongo_integration_OPTIONAL)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/10_integarate_frontend_with_backend)
