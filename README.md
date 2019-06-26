@@ -6,44 +6,20 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-In this step we'll do a self contained build with the UI5 Tooling.
+Start making our UI5 App a Progressive Web App.
 
-Start by generating a UI5 tooling config with the following command:
-```bash
-ui5 init
-```
+We'll need to define a manifest file. Inside it's just some metadata  like icons, name, colors etc.
+As iOS devices do not fully support PWA manifests, we'll need to alter the ``` webapp/index.js ``` by adding several meta tags.
 
-**Note:** The command above should be executed in the root folder of the application.
-
----
-Next, we'd update package.json file in order to add build tasks.
-
-Runs the UI5 build:
-```bash
-npm run frontend:ui5_build
-```
-
-Runs the TypeScript Linter, TypeScript Compiler and finally executes the UI5 Build: 
-```bash
-npm run frontend:build
-```
-
-Runs ```npm run frontend:build``` and then starts the backend. 
-```bash
-npm start
-```
----
-
-The last thing to modify is to change the static server to serve from ``/dist`` folder instead of ``/webapp``. UI5's Build puts all the assets under ``/dist``.
+When you're done with that step, you could see if the manifest got defined properly by opening Chrome DevTools, Application tab and Manifest on the left.  
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` package.json ```]()
-- :small_orange_diamond: [``` backend/index.js ```]()
-- :new: [``` ui5.yaml ```]()
+- :new: [``` offline/manifest.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest#diff-cdc8677e38471d6b02d1b3e4181e3029)
+- :small_orange_diamond: [``` webapp/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest#diff-993d50876f35e232013fe86cdcef31f2)
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/12_pwa_manifest)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/13_pwa_service_worker)
