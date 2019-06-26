@@ -4,39 +4,36 @@ In the UI5 world there is a belief that UI5 is not to be used out of the SAP wor
 In our session we will show you how you can use UI5 “out of the box” and easily integrate our framework into any hype or stack.
 We’ll build a modern full stack App from scratch, using OpenUI5 as frontend layer.
 
-## Optional Step
-
-This step is optional. If you don't have MognoDB installed on your system, you might skip it.
-
-If you have a Docker instance running, you could build a MongoDB container with the following command:
-
-```bash
-docker run -d -p 27017:27017 --name ui5-mongodb mongo:3.4
-```
-
 ## Steps
 
-Here we would integrate MongoDB within the GraphQL server. That way we'll have a real percistency of the data.
+In this step we'll integrate frontend with the backend.
 
-For managing MongoDB queries we'll use Mongoose. It's an ORM layer on top of MongoDB native driver. It supports schemas and types.
+As we'll hit the backend via GraphQL queries, we'll need to build a fronetend GraphQL client. in therms of UI5, it would be a GraphQL model.
+The interesting part here is that we don't need to build it from scratch, but enhance the JSONModel with a new method ``query``.
 
-The Mongoose schema is described in ``` backend/models/Records.js ```. As you could see it's similar to the GraphQL type that we defined earlier, but it's in JSON format.
+And it's simple as that!
 
-There's also a simple script ``` backend/mock-data/import-data.js ``` which would import the mocked data defined in ``` backend/mock-data/data.js ```. That way it'd be easier to start exploring. Data gets imported automatically to MongoDB when you start the server. If you restart it, data won't be overwritten.
+The ``query`` method would use browser's ``fetch`` API, so we could later (when making our app a PWA) cache the requests. There are also some details, like CORS enablement and that GraphQL works over ``POST``.
 
-The real integration is within the ``` backend/graphql/resolvers/Record/index.js ```. As we saw earlier, there are the methods that would be called on GraphQL query. So, we're just proxying the call to the Mongoose and it writes to MongoDB.
+We'd need to alter the App's controller, so all the changes that we're doing on the screen, would be sent to the backend.
 
-When you finish this task, you could open [``http://localhost:8080/graphql``](http://localhost:8080/graphql) and play around. Try to restart the server and check that the data is actually saved.
+There would be also a slight (but very interesting) modification over the ``` webapp/view/fragments/UserDisplay.fragment.xml ``` which would allow us to display only the fields that we requested from GraphQL.
+
+When done with that step, open the application at [`` http://localhost:8080/ ``](http://localhost:8080/), open browser's DevTools Network tab and start investigating the ``/graphql`` ``POST`` query.
+
+As all the buttons across the app are fully functional, try different configurations and again inspect the Network in DevTools.   
+   
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` backend/index.js ```]()
-- :small_orange_diamond: [``` backend/graphql/resolvers/Record/index.js ```]()
-- :new: [``` backend/mock-data/import-data.js ```]()
-- :new: [``` backend/models/Records.js ```]()
+- :small_orange_diamond: [``` webapp/controller/View1.controller.ts ```]()
+- :small_orange_diamond: [``` webapp/view/View1.view.xml ```]()
+- :small_orange_diamond: [``` webapp/view/fragments/UserDisplay.fragment.xml ```]()
+- :small_orange_diamond: [``` webapp/manifest.json ```]()
+- :new: [``` webapp/model/graphql/GraphQLModel.ts ```]()
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/10_integarate_frontend_with_backend)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/11_frontend_self_contained_ui5_build)
