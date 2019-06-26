@@ -6,34 +6,44 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-In this step we'll integrate frontend with the backend.
+In this step we'll do a self contained build with the UI5 Tooling.
 
-As we'll hit the backend via GraphQL queries, we'll need to build a fronetend GraphQL client. in therms of UI5, it would be a GraphQL model.
-The interesting part here is that we don't need to build it from scratch, but enhance the JSONModel with a new method ``query``.
+Start by generating a UI5 tooling config with the following command:
+```bash
+ui5 init
+```
 
-And it's simple as that!
+**Note:** The command below should be executed in the root folder of the application.
 
-The ``query`` method would use browser's ``fetch`` API, so we could later (when making our app a PWA) cache the requests. There are also some details, like CORS enablement and that GraphQL works over ``POST``.
+We'd update package.json file in order to add build tasks.
 
-We'd need to alter the App's controller, so all the changes that we're doing on the screen, would be sent to the backend.
+Runs the UI5 build:
+```bash
+npm run frontend:ui5_build
+```
 
-There would be also a slight (but very interesting) modification over the ``` webapp/view/fragments/UserDisplay.fragment.xml ``` which would allow us to display only the fields that we requested from GraphQL.
+Runs the TypeScript Linter, TypeScript Compiler and finally executes the UI5 Build: 
+```bash
+npm run frontend:build
+```
 
-When done with that step, open the application at [`` http://localhost:8080/ ``](http://localhost:8080/), open browser's DevTools Network tab and start investigating the ``/graphql`` ``POST`` query.
+Runs ```npm run frontend:build``` and then starts the backend. 
+```bash
+npm start
+```
 
-As all the buttons across the app are fully functional, try different configurations and again inspect the Network in DevTools.   
-   
+
+
+The last thing to modify is to change the static server to serve from ``/dist`` folder instead of ``/webapp``. UI5's Build puts all the assets under ``/dist``.
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` webapp/controller/View1.controller.ts ```]()
-- :small_orange_diamond: [``` webapp/view/View1.view.xml ```]()
-- :small_orange_diamond: [``` webapp/view/fragments/UserDisplay.fragment.xml ```]()
-- :small_orange_diamond: [``` webapp/manifest.json ```]()
-- :new: [``` webapp/model/graphql/GraphQLModel.ts ```]()
+- :small_orange_diamond: [``` package.json ```]()
+- :small_orange_diamond: [``` backend/index.js ```]()
+- :new: [``` ui5.yaml ```]()
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/11_frontend_self_contained_ui5_build)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/12_pwa_manifest)
