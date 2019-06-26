@@ -10,7 +10,7 @@ Introduce a Service Worker.
 
 The Service Worker would enable our application to cache certain resources. In this case, we'd cache all the static assets and the GraphQL request. This would make our application available offline, if the network goes down.
 
-There are 3 events which we'd use:
+There are 3 Service Worker events which we'd use:
 - ``install`` Caches all the static assets
 - ``activate`` Invalidates the cache
 - ``fetch`` Intercepts GraphQL requests and caches them. In case of network fail, serves from the cache.
