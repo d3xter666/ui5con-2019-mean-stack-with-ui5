@@ -6,21 +6,19 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-Make app installable.
+Dockerize the app.
 
-In this step we'll see how we could install our application. Along with a proper caching, this could make our application fully functional even online.
+We'd dockerize the application by building a Docker image.
 
-We'll adjust the View by adding a button which would be hidden by default. In the controller we'd subscribe to ``beforeinstallprompt`` event, which is fired only when the application is not installed. This would allow us to get the install prompt and enable the install button at the top right corner.
+Then we'll create a MongoDB container and run both containers (mongodb + app) within the same network. 
 
 #### Modified Files in this step
 
 
-- :small_orange_diamond: [```webapp/controller/View1.controller.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/13_pwa_service_worker...14_pwa_make_app_installable#diff-3844c0d509dc360fa3e6fa72c04a8c43)
-- :small_orange_diamond: [```webapp/service-worker.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/13_pwa_service_worker...14_pwa_make_app_installable#diff-bc97ac5b88926d76d5512b2c18a07f30)
-- :small_orange_diamond: [```webapp/view/View1.view.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/13_pwa_service_worker...14_pwa_make_app_installable#diff-7d16669b9b015ff9210f8b6c920cc927)
+- :new: [``` Dockerfile ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app#diff-3254677a7917c6c01f55212f86c57fbf)
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/13_pwa_service_worker...14_pwa_make_app_installable)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app)
 
 
 ## Run with Docker
@@ -40,7 +38,7 @@ docker network create -d bridge --subnet=172.20.0.0/16 ui5con-network
 docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 172.20.0.22 mongo:3.4
 ```
 
-#### 4) Run the image
+#### 4) Run the App image
 ```bash
 docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.20.0.27 --env MONGO=mongodb://172.20.0.22:27017/local ui5con/ui5-full-stack
 ```
