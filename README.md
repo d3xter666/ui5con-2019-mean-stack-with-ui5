@@ -42,3 +42,7 @@ docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 17
 ```bash
 docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.20.0.27 --env MONGO=mongodb://172.20.0.22:27017/local ui5con/ui5-full-stack
 ```
+
+## Thank you!
+
+Congratulations! You've just finished our UI5Con Hands-On session.  
