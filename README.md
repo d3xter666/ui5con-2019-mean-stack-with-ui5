@@ -15,7 +15,8 @@ ui5 init
 
 **Note:** The command above should be executed in the root folder of the application.
 
-We'd update package.json file in order to add build tasks.
+---
+Next, we'd update package.json file in order to add build tasks.
 
 Runs the UI5 build:
 ```bash
@@ -31,8 +32,7 @@ Runs ```npm run frontend:build``` and then starts the backend.
 ```bash
 npm start
 ```
-
-
+---
 
 The last thing to modify is to change the static server to serve from ``/dist`` folder instead of ``/webapp``. UI5's Build puts all the assets under ``/dist``.
 
