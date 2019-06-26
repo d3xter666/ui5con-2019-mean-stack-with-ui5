@@ -10,6 +10,8 @@ In this step we'll slightly make a transition from plain JS to TypeScript.
 
 As TypeScript is a superset of JavaScript, it's perfectly fine to start by changing all JS files extensions from ``.js`` to ``.ts``.
 
+**Task:** Rename all ``.js`` files to ``.ts``
+
 If you run TSLint checks ```npm run frontend:tslint``` it'd fail.
 
 But if you try to compile the files ``npm run frontend:ts_compile``, the compilation would finish successfully. And the result would be exactly the same files, but with ``.js`` extension.
