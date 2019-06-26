@@ -6,20 +6,24 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 ## Steps
 
-Start making our UI5 App a Progressive Web App.
+Introduce a Service Worker.
 
-We'll need to define a manifest file. Inside it's just some metadata  like icons, name, colors etc.
-As iOS devices do not fully support PWA manifests, we'll need to alter the ``` webapp/index.js ``` by adding several meta tags.
+The Service Worker would enable our application to cache certain resources. In this case, we'd cache all the static assets and the GraphQL request. This would make our application available offline, if the network goes down.
 
-When you're done with that step, you could see if the manifest got defined properly by opening Chrome DevTools, Application tab and Manifest on the left.  
+There are 3 events which we'd use:
+- ``install`` Caches all the static assets
+- ``activate`` Invalidates the cache
+- ``fetch`` Intercepts GraphQL requests and caches them. In case of network fail, serves from the cache.
 
 #### Modified Files in this step
 
-- :new: [``` offline/manifest.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest#diff-cdc8677e38471d6b02d1b3e4181e3029)
-- :small_orange_diamond: [``` webapp/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest#diff-993d50876f35e232013fe86cdcef31f2)
+
+- :small_orange_diamond: [```webapp/index.html ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/12_pwa_manifest...13_pwa_service_worker#diff-993d50876f35e232013fe86cdcef31f2)
+- :new: [``` webapp/offline/ui5-pwa.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/12_pwa_manifest...13_pwa_service_worker#diff-7fe03adc6156e44535c578eacddf05f6)
+- :new: [``` webapp/service-worker.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/12_pwa_manifest...13_pwa_service_worker#diff-bc97ac5b88926d76d5512b2c18a07f30)
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/11_frontend_self_contained_ui5_build...12_pwa_manifest)
+[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/12_pwa_manifest...13_pwa_service_worker)
 
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/13_pwa_service_worker)
+- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/14_pwa_make_app_installable)
