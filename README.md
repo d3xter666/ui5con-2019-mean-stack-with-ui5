@@ -13,7 +13,7 @@ Start by generating a UI5 tooling config with the following command:
 ui5 init
 ```
 
-**Note:** The command below should be executed in the root folder of the application.
+**Note:** The command above should be executed in the root folder of the application.
 
 We'd update package.json file in order to add build tasks.
 
