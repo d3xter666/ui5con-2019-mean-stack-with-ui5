@@ -28,24 +28,6 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
     - Install button
 8. (Bonus) Run with Docker
 
-## Run with Docker
+## More information
 
-#### 1) Build an image
-```bash
-docker build -t ui5con/ui5-full-stack .
-```
-
-#### 2) Create a network
-```bash
-docker network create -d bridge --subnet=172.20.0.0/16 ui5con-network
-```
-
-#### 3) Create a mongo container
-```bash
-docker run -d -p 27017:27017 --name ui5-mongodb --network ui5con-network --ip 172.20.0.22 mongo:3.4
-```
-
-#### 4) Run the image
-```bash
-docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --ip 172.20.0.27 --env MONGO=mongodb://172.20.0.22:27017/local ui5con/ui5-full-stack
-```
+Please check the [official presentation](./ui5con2019-mean-stack-ui5.pptx) where you could find more details and links for the session.
