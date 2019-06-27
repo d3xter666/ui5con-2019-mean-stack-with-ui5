@@ -38,9 +38,9 @@ The last thing to modify is to change the static server to serve from ``/dist`` 
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` package.json ```]()
-- :small_orange_diamond: [``` backend/index.js ```]()
-- :new: [``` ui5.yaml ```]()
+- :small_orange_diamond: [``` package.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build#diff-b9cfc7f2cdf78a7f4b91a753d10865a2)
+- :small_orange_diamond: [``` backend/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build#diff-88c27a1520c87d0681d9900173d92c57)
+- :new: [``` ui5.yaml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build#diff-f7cafeb3d075b6c5d28c1102cec23f52)
 
 
 [See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/10_integarate_frontend_with_backend...11_frontend_self_contained_ui5_build)
