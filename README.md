@@ -26,11 +26,11 @@ As all the buttons across the app are fully functional, try different configurat
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` webapp/controller/View1.controller.ts ```]()
-- :small_orange_diamond: [``` webapp/view/View1.view.xml ```]()
-- :small_orange_diamond: [``` webapp/view/fragments/UserDisplay.fragment.xml ```]()
-- :small_orange_diamond: [``` webapp/manifest.json ```]()
-- :new: [``` webapp/model/graphql/GraphQLModel.ts ```]()
+- :small_orange_diamond: [``` webapp/controller/View1.controller.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend#diff-3844c0d509dc360fa3e6fa72c04a8c43)
+- :small_orange_diamond: [``` webapp/view/View1.view.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend#diff-7d16669b9b015ff9210f8b6c920cc927)
+- :small_orange_diamond: [``` webapp/view/fragments/UserDisplay.fragment.xml ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend#diff-8273dda6b30a149d8fb9c570b063c686)
+- :small_orange_diamond: [``` webapp/manifest.json ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend#diff-b1bdec94bfccfdfade7639fdc328fd97)
+- :new: [``` webapp/model/graphql/GraphQLModel.ts ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend#diff-0c01e89dd502c35381b4b85d7e73ee90)
 
 
 [See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/09_graphql_mongo_integration_OPTIONAL...10_integarate_frontend_with_backend)
