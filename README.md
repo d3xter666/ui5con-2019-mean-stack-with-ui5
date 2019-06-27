@@ -30,10 +30,10 @@ When you finish this task, you could open [``http://localhost:8080/graphql``](ht
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` backend/index.js ```]()
-- :small_orange_diamond: [``` backend/graphql/resolvers/Record/index.js ```]()
-- :new: [``` backend/mock-data/import-data.js ```]()
-- :new: [``` backend/models/Records.js ```]()
+- :small_orange_diamond: [``` backend/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL#diff-88c27a1520c87d0681d9900173d92c57)
+- :small_orange_diamond: [``` backend/graphql/resolvers/Record/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL#diff-07df6d57fc733795bb85dbab1fb3738d)
+- :new: [``` backend/mock-data/import-data.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL#diff-7fb506934c2ac9452e704aebbe77e90c)
+- :new: [``` backend/models/Record.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL#diff-be8cebb21875ac05d70f564e77a457ff)
 
 
 [See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/08_backend_graphql...09_graphql_mongo_integration_OPTIONAL)
