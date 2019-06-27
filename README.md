@@ -14,7 +14,7 @@ Now the server would be responsible for the GraphQL requests as well as serving 
 
 GraphQL comes with a built-in Web Client. When you're ready with this step, you could explore it at [`` http://localhost:8080/graphql ``](http://localhost:8080/graphql)
 
-**Note:** This is just the GraphQL server and it's still not integrated with any percistency storage. In the next step (which is optional, if you don't have MongoDB installed on your system), we'll integrate GraphQL with MongoDB.
+**Note:** This is just the GraphQL server and it's still not integrated with any persistency storage. In the next step (which is optional, if you don't have MongoDB installed on your system), we'll integrate GraphQL with MongoDB.
 
 Although GraphQL is still not integrated with MongoDB, you would get results when do a query. This is because the ``resolver`` is made to use a mocked json file. It's (almost) the same json that we used in the frontend. 
 
@@ -67,16 +67,16 @@ So, in the query above we'll add a Record and the response would return Record's
 
 #### Download the assets
 
-- [``backend/mock-data/data.js ``]()
+- [``backend/mock-data/data.js ``](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/de8ad270cc0bb4261cb404aea7e28e4013adef98/backend/mock-data/data.js)
 
 #### Modified Files in this step
 
-- :small_orange_diamond: [``` backend/index.js ```]()
-- :new: [``` backend/graphql/index.js ```]()
-- :new: [``` backend/graphql/types/index.js ```]()
-- :new: [``` backend/graphql/types/Record/index.js ```]()
-- :new: [``` backend/graphql/resolvers/index.js ```]()
-- :new: [``` backend/graphql/resolvers/Record/index.js ```]()
+- :small_orange_diamond: [``` backend/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-88c27a1520c87d0681d9900173d92c57)
+- :new: [``` backend/graphql/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-0a5b4ccbe01be8d404c08fa2fbb28e45)
+- :new: [``` backend/graphql/types/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-e75e6e1c759aead75ba9c0d094618a71)
+- :new: [``` backend/graphql/types/Record/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-1da3c3bac9ba4d18dc6cc32faf7ef428)
+- :new: [``` backend/graphql/resolvers/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-b47d99141e893d90c1e427b5217951a5)
+- :new: [``` backend/graphql/resolvers/Record/index.js ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql#diff-07df6d57fc733795bb85dbab1fb3738d)
 
 
 [See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/07_frontend_CRUD_mocked...08_backend_graphql)
