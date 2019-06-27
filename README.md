@@ -8,7 +8,7 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 
 In this step we'll integrate frontend with the backend.
 
-As we'll hit the backend via GraphQL queries, we'll need to build a fronetend GraphQL client. in therms of UI5, it would be a GraphQL model.
+As we'll hit the backend via GraphQL queries, we'll need to build a frontend GraphQL client. In terms of UI5, it would be a GraphQL model.
 The interesting part here is that we don't need to build it from scratch, but enhance the JSONModel with a new method ``query``.
 
 And it's simple as that!
