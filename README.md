@@ -15,10 +15,10 @@ Then we'll create a MongoDB container and run both containers (mongodb + app) wi
 #### Modified Files in this step
 
 
-- :new: [``` Dockerfile ```](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app#diff-3254677a7917c6c01f55212f86c57fbf)
+- :new: [``` Dockerfile ```](https://github.wdf.sap.corp/hands-ons-dkom2020/ui5-experiments/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app#diff-3254677a7917c6c01f55212f86c57fbf)
 
 
-[See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app)
+[See Full Comparison](https://github.wdf.sap.corp/hands-ons-dkom2020/ui5-experiments/compare/14_pwa_make_app_installable...15_BONUS_Dockerize_the_app)
 
 
 ## Run with Docker
@@ -45,4 +45,4 @@ docker run -p 8080:8080 -d --name ui5-full-stack-app --network ui5con-network --
 
 ## Thank you!
 
-Congratulations! You've just finished our UI5Con Hands-On session.  
+Congratulations! You've just finished our UI5 Hands-On session.  
