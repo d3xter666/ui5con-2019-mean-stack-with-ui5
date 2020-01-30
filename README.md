@@ -19,6 +19,6 @@ When done, run the following NPM command:
 npm install
 ```
 
-- [See Full Comparison](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/compare/00_webapp_template...01_configure_project_dependencies)
+- [See Full Comparison](https://github.wdf.sap.corp/hands-ons-dkom2020/ui5-experiments/compare/00_webapp_template...01_configure_project_dependencies)
 ---
-- [Next Step](https://github.com/d3xter666/ui5con-2019-mean-stack-with-ui5/tree/02_simple_static_server)
+- [Next Step](https://github.wdf.sap.corp/hands-ons-dkom2020/ui5-experiments/tree/02_simple_static_server)
