@@ -9,8 +9,8 @@ We’ll build a modern full stack App from scratch, using OpenUI5 as frontend la
 Now we're going to install all the dependencies needed for that project.
 
 #### Download the assets
-- [package.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package.json)
-- [package-lock.json](https://raw.githubusercontent.com/d3xter666/ui5con-2019-mean-stack-with-ui5/01_configure_project_dependencies/package-lock.json)
+- [package.json](https://github.wdf.sap.corp/raw/hands-ons-dkom2020/ui5-experiments/01_configure_project_dependencies/package.json)
+- [package-lock.json](https://github.wdf.sap.corp/raw/hands-ons-dkom2020/ui5-experiments/01_configure_project_dependencies/package-lock.json)
 
 
 When done, run the following NPM command:
