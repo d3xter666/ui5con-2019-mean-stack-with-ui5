@@ -5,15 +5,6 @@ In our session we will show you how you can use UI5 “out of the box” and eas
 We’ll build a modern full stack App from scratch, using OpenUI5 as frontend layer.
 
 
-## How to proceed.
-Every step of the exercise is in a separate branch. You could either browse the branches or use the links in every step.
-
-For each step, there's a list with the new/modified files which you need to alter.
-You could see the increment between the current and the previous step.
-
-### [Start Here](./00_webapp_template)
-
-
 ## Agenda
 
 1. Bootstrap- initial project with dependencies.
@@ -36,3 +27,7 @@ You could see the increment between the current and the previous step.
     - Service Worker
     - Install button
 8. (Bonus) Run with Docker
+
+## More information
+
+Please check the [official presentation](./ui5con2019-mean-stack-ui5.pptx) where you could find more details and links for the session.
