@@ -11,7 +11,7 @@ Every step of the exercise is in a separate branch. You could either browse the 
 For each step, there's a list with the new/modified files which you need to alter.
 You could see the increment between the current and the previous step.
 
-### [Start Here](./00_webapp_template)
+### [Start Here](https://github.wdf.sap.corp/hands-ons-dkom2020/ui5-experiments/tree/00_webapp_template)
 
 
 ## Agenda
